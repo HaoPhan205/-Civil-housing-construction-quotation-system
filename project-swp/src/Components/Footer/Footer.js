@@ -1,5 +1,3 @@
-/* eslint-disable import/no-anonymous-default-export */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faInstagram, faTiktok } from '@fortawesome/free-brands-svg-icons'
