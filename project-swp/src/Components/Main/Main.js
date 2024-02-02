@@ -1,9 +1,9 @@
 import React from "react";
-
+import Header from "../Header/Header";
 function Main() {
   return (
     <main>
-      <h1></h1>
+        <Header/>
     </main>
   );
 }
