@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Update User</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="updateUsers.js"></script>
+  </head>
+  <body>
+    <h1>Update User</h1>
+    <button id="backButton">Back</button>
+    <table id="usersTable">
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>User Name</th>
+          <th>User Password</th>
+          <th>User Role</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- User rows will be added here by JavaScript -->
+      </tbody>
+    </table>
+    <script>
+      document
+        .getElementById("backButton")
+        .addEventListener("click", function () {
+          window.location.href = "index.html";
+        });
+    </script>
+  </body>
+</html>
