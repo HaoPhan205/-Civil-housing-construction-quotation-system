@@ -1,0 +1,62 @@
+.content-lower-image img {
+    width: 100%;
+    height: 91vh;
+    object-fit: cover;
+    object-position: center;
+}
+
+.content-lower-inner {
+    height: 91vh;
+    background-color: #1B1A55;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.content-lower-inner p {
+    font-weight:500;
+    font-size: larger;
+    text-align: justify;
+}
+
+.content-lower-inner-description{
+    text-align: justify; /* Sử dụng justify để căn đều hai lề */
+  align-items: center;
+  margin: 0 3em;
+
+}
+
+.button-lower-inner-detail{
+    display: flex;
+    align-items: center;
+}
+
+.button-lower-inner-detail .button-lower-inner-detail-first{
+    text-decoration: none;
+    font-size: 18px;
+    font-family: 'Roboto Condensed';
+    text-transform: none;
+    margin: 0.5em;
+    font-weight: bolder;  
+    border-radius: 0px;
+    color:white;
+}
+    
+.button-lower-inner-detail .button-lower-inner-detail-second{
+    text-decoration: none;
+    font-size: 18px;
+    font-family: 'Roboto Condensed';
+    text-transform: none;
+    margin: 0.5em;
+    font-weight: bolder;  
+    background-color: yellow;
+    border-radius: 40px;
+    color: black;
+    margin-right: 2em;
+}
+    
+.line-content-inner{
+    border-bottom: 3px solid yellow; /* Màu và kiểu đường kẻ của dòng */
+    margin: 20px 0; /* Lề trên và dưới của dòng */
+    width: 2em;
+  }

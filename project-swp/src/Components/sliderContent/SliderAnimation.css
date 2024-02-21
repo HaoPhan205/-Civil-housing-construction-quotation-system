@@ -1,0 +1,13 @@
+.slick-track {
+    width:1000px;
+}
+
+.slider-scroller {
+    
+}
+
+.slider-scroller-inner {
+    width: 70%;
+    display: flex;
+    align-self: center;
+}
