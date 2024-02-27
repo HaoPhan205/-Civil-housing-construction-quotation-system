@@ -2,8 +2,9 @@ import React from "react";
 import "./App.css";
 import Homepage from "./Pages/Homepage/Homepage";
 import FotgtPassword from "./Pages/ForgotPassword/ForgotPassword";
-import { Routes, Route, Link } from "react-router-dom";
-import { LoginSignUpPage } from "./Pages/LoginSignUpPage/LoginSignUpPage";
+import { Routes, Route } from "react-router-dom";
+import SignUpPage from "./Pages/SignUpPage/SignUpPage";
+import SignInPage from "./Pages/SignInPage/SignInPage";
 
 function App() {
   return (
@@ -11,9 +12,20 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/forgotpassword" element={<FotgtPassword />} />
-        <Route path="/login" element={<LoginSignUpPage/>} />
+        <Route path="/signin" element={<SignInPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
       </Routes>
     </div>
+    // <div className="App">
+    //   <Router>
+    //     <Switch>
+    //       <Route path="/" element={<Homepage />} />
+    //       <Route path="/forgotpassword" element={<FotgtPassword />} />
+    //       <Route path="/login" element={<LoginSignUpPage />} />
+    //       <Route path="/signup" element={<LoginSignUpPage />} />
+    //     </Switch>
+    //   </Router>
+    // </div>
   );
 }
 export default App;
