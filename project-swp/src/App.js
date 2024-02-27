@@ -1,15 +1,19 @@
-import React from 'react';
-import './App.css';
-import Header from './Components/Header/Header';
-import Main from './Components/Main/Main';
+import React from "react";
+import "./App.css";
+import Homepage from "./Pages/Homepage/Homepage";
+import FotgtPassword from "./Pages/ForgotPassword/ForgotPassword";
+import { Routes, Route, Link } from "react-router-dom";
+import { LoginSignUpPage } from "./Pages/LoginSignUpPage/LoginSignUpPage";
 
 function App() {
   return (
     <div className="App">
-      <Header/>
-      <Main/>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/forgotpassword" element={<FotgtPassword />} />
+        <Route path="/login" element={<LoginSignUpPage/>} />
+      </Routes>
     </div>
   );
 }
-
 export default App;

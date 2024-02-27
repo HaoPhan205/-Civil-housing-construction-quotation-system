@@ -1,0 +1,62 @@
+.container-grid-upper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container-grid-lower{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container .button-below {
+   
+    background-color: #1B1A55;
+    border-radius: 20px;
+    color: white;
+    font-size: medium;
+    text-align: center;
+    font-family: "Roboto Condensed";
+    font-weight: bold;
+    width: 7em;
+    text-transform: none;
+}
+
+.content .title {
+    font-family: "Roboto Condensed";
+    font-weight: bold;
+
+}
+
+.container .card {
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.container .button-detail {
+    text-transform: none;
+    font-size: larger;
+}
+
+.section-button {
+    display: flex;
+    gap: 3em;
+    height: 3em;
+    margin-bottom: 2em;
+   
+}
+
+.section-button .section-button-detail {
+    background-color: #E4E4E7;
+    border-radius: none;
+    color: black;
+    font-size: medium;
+    text-align: center;
+    font-family: "Roboto Condensed";
+    font-weight: bold;
+    width: 12em;
+    text-transform: none;
+}
+

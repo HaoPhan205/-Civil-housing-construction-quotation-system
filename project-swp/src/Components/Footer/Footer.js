@@ -1,49 +1,40 @@
 import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebook, faInstagram, faTiktok } from '@fortawesome/free-brands-svg-icons'
 import './Footer.css'
+
 import { Link } from 'react-router-dom'
-export default function () {
-    
-  return (
-    <div className='Footer'>
-       <div className='First-Color'>
-          <div className='container'>
-            <div className='row'>
-               <div className='column col-2 service'>
-                    <ul>
-                        <li><Link to={'/'}>Home</Link></li>
-                        <li><a href=''>Account</a></li>
-                        <li><a href='/search/:query'>Search</a></li>
-                    </ul>
-               </div>
-               <div className='column col-4 service'>
-                <h1>Our Service</h1>
-                    <ul>
-                        <li><a href='/question-anwser'>Q&A</a></li>
-                        <li><a href='/shipment'>Shipment</a></li>
-                        <li><a href='/return-policy'>Return Policy</a></li>
-                        <li><a href='/payment-detail'>Payment detail</a></li>
-                    </ul>
-               </div>
-               <div className='column col-4 service'>
-               <h1>CS Shoes</h1>
-                    <ul>
-                        <li><a href='/about'>About Us</a></li>
-                        <li><a href='/privacy-policy'>Privacy Policy</a></li>
-                        <li><a href='/term-and-conditions'>Terms and Conditions</a></li>
-                        <li><a href='/contact'>Contact</a></li>
-                    </ul>
-               </div>
-               <div className='column col-2 Contact-Footer'>
-                <p className='follow-us'>Folllow us</p>
-                <a href='https://www.instagram.com/' target='_blank'><FontAwesomeIcon icon={faInstagram} /></a>
-                <a href='https://www.tiktok.com/explore' target='_blank'><FontAwesomeIcon icon={faTiktok} /></a>      
-                <a href='https://www.facebook.com/' target='_blank'><FontAwesomeIcon icon={faFacebook} /></a>
-               </div>
+import Logo from '../logo/Logo'
+export default function Footer() {
+    return (
+        <div className='content'>
+            <div className='footer'>
+                <div className='logo'><Logo/></div>
+                <div className='section'>
+                    <div className='section1'>
+                        <div className='section1-upper'>
+                            <ul >
+                                <li ><Link className='section1-upper-detail' to='/quotation'>Báo giá</Link></li>
+                                <li ><Link className='section1-upper-detail' to='/blog'>Blog</Link></li>
+                                <li><Link className='section1-upper-detail' to='/criteria'>Tiêu chí hoạt động</Link></li>
+                                <li><Link className='section1-upper-detail' to='/legal'>Chính sách & pháp lý</Link></li>
+                            </ul>
+                        </div>
+
+                        <div className='section1-lower'>
+                            <ul >
+                                <li>Hotline: 0903987732 - 0883742342</li>
+                                <li>Location: Lô E2a-7, Đường D1, Long Thạnh Mỹ, Thành Phố Thủ Đức, Thành phố Hồ Chí Minh </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div> 
-          </div>
-          </div>
-  )
+
+            <div className='divider'></div>
+
+            <div className='section2'>
+                <p>© Copyright 2024, All Rights Reserved by BuildQuoteExperts</p>
+            </div>
+
+        </div>
+    )
 }

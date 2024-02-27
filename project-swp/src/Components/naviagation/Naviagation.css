@@ -1,0 +1,19 @@
+.naviagator {
+    
+    ul {
+        display: flex;
+        li {
+            list-style: none;
+            padding: 0 3vw;
+        }
+    }
+    
+}
+
+.naviagator__detail {
+    text-decoration: none;
+    color: black;
+    font-size: 1em;
+    text-align: center;
+    font-family: 'Montserrat';
+}

@@ -1,1 +1,8 @@
-    
+.header {
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(254, 254, 253);
+    align-items: center; 
+    height:5em;
+    font-weight: 600;
+}
