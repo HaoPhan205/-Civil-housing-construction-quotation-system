@@ -1,15 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
+import './LoginSignUpPage.css'
 
-import user_icon from '../Assets/person.png'
-import email_icon from '../Assets/email.png'
-import password_icon from '../Assets/password.png'
+import user_icon from '../../assets/person.png'
+import email_icon from '../../assets/email.png'
+import password_icon from '../../assets/password.png'
 
 export const LoginSignUpPage = () => {
     const [action, setAction] = useState("Login");
 
     return (
-        <div className='container'>
-            <div className='header'>
+        <div className='container-login-signup'>
+            <div className='header-login-signup'>
                 <div className='text'>{action}</div>
                 <div className='underline'></div>
             </div>

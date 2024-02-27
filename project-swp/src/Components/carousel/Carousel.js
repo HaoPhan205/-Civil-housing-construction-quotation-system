@@ -3,8 +3,6 @@ import React, { useEffect, useState } from 'react'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import './Carousel.css'
-import image1 from '../../assets/demo_carousel1.png';
-import image2 from '../../assets/demo_carousel2.png';
 
 const items = [
     <img className='carousel_pic' key="1" src="https://stdecor.com.vn/wp-content/uploads/2022/01/xay-nha-tron-goi-phan-thiet-binh-thuan.jpg" alt="Slide 1" style={{ width: '100%' }} />,

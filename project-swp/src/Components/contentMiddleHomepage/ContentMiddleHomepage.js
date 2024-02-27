@@ -12,12 +12,12 @@ export default function ContentMiddleHomepage() {
         {
             id: 2,
             label: 'Thiết kế nhà phố cổ điển',
-            imgPath: 'https://xdnamthienphat.vn/wp-content/uploads/2019/07/phan-loai-cac-nha-dan-dung-1.png',
+            imgPath: 'https://api.xaynhadeponline.com/uploads/xu_huong_thiet_ke_nha_cap_4_2c53ffe032.jpg',
         },
         {
             id: 3,
             label: 'Thiết kế nhà phố với sân vườn',
-            imgPath: 'https://xdnamthienphat.vn/wp-content/uploads/2019/07/phan-loai-cac-nha-dan-dung-1.png',
+            imgPath: 'https://xaydunghuyhoang.vn/wp-content/uploads/2023/09/7-mau-nha-2-tang-hien-dai.jpg',
         },
 
 
