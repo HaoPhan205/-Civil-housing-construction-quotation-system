@@ -11,8 +11,8 @@ function SignUp() {
           Đăng nhập
         </Link>
       </Button> */}
-      <Button className="signInUp_button signUp" variant="contained">
-        <Link to="/signup">Đăng ký</Link>
+      <Button className="signInUp_button signUp" variant="contained" >
+        <Link to="/signup" style={{color:"white"}}>Đăng ký</Link>
       </Button>
     </div>
   );

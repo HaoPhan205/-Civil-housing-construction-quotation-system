@@ -1,4 +1,4 @@
-.signInUp  .signInUp_button{
+.signUp  .signInUp_button{
     text-decoration: none;
     font-size: 1em;
     font-family: 'Montserrat';
@@ -9,13 +9,8 @@
     
 
 
-.signInUp .signUp{
+.signUp .signUp{
     background-color: #1B1A55;
     border-radius: 40px;
-  
-}
-
-.signInUp .signIn{
-  color: black;
-  text-decoration: none;
+    text-decoration: none;
 }
