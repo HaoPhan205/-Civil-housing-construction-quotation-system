@@ -1,0 +1,21 @@
+.signInUp  .signInUp_button{
+    text-decoration: none;
+    font-size: 1em;
+    font-family: 'Montserrat';
+    text-transform: none;
+    margin: 0.5em;
+    font-weight: 600;  
+}
+    
+
+
+.signInUp .signUp{
+    background-color: #1B1A55;
+    border-radius: 40px;
+  
+}
+
+.signInUp .signIn{
+  color: black;
+  text-decoration: none;
+}
