@@ -6,7 +6,7 @@ import "./Homepage.css";
 import ContentUpperHomepage from "../../Components/contentUpperHomepage/ContentUpperHomepage";
 import ContentMiddleHomepage from "../../Components/contentMiddleHomepage/ContentMiddleHomepage";
 import ContentLowerHomepage from "../../Components/contentLowerHomepage.js/ContentLowerHomepage";
-import Footer from "../../Components/Footer/Footer";
+import Footer from "../../Components/footer/Footer";
 export default function Homepage() {
   return (
     <div className="homepage">

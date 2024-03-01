@@ -20,16 +20,6 @@ function App() {
         <Route path="/contact" element={<Contact />} />
       </Routes>
     </div>
-    // <div className="App">
-    //   <Router>
-    //     <Switch>
-    //       <Route path="/" element={<Homepage />} />
-    //       <Route path="/forgotpassword" element={<FotgtPassword />} />
-    //       <Route path="/login" element={<LoginSignUpPage />} />
-    //       <Route path="/signup" element={<LoginSignUpPage />} />
-    //     </Switch>
-    //   </Router>
-    // </div>
   );
 }
 export default App;
