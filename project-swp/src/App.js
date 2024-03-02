@@ -7,6 +7,7 @@ import SignUpPage from "./Pages/SignUpPage/SignUpPage";
 import SignInPage from "./Pages/SignInPage/SignInPage";
 import ConstructionCalculator from "./Pages/QuotationPage/QuotationForm";
 import Contact from "./Pages/Contact/Contact";
+import DashBoard from "./Pages/AdminPage/DashBoard";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/quotation" element={<ConstructionCalculator />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/dashboard" element={<DashBoard />} />
       </Routes>
     </div>
   );
