@@ -5,9 +5,8 @@ import FotgtPassword from "./Pages/ForgotPassword/ForgotPassword";
 import { Routes, Route } from "react-router-dom";
 import SignUpPage from "./Pages/SignUpPage/SignUpPage";
 import SignInPage from "./Pages/SignInPage/SignInPage";
-import ConstructionCalculator from "./Pages/QuotationPage/QuotationForm";
+import Quotation from "./Pages/QuotationPage/baogia";
 import Contact from "./Pages/Contact/Contact";
-import DashBoard from "./Pages/AdminPage/DashBoard";
 
 function App() {
   return (
@@ -17,9 +16,8 @@ function App() {
         <Route path="/forgotpassword" element={<FotgtPassword />} />
         <Route path="/signin" element={<SignInPage />} />
         <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/quotation" element={<ConstructionCalculator />} />
+        <Route path="/quotation" element={<Quotation />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/dashboard" element={<DashBoard />} />
       </Routes>
     </div>
   );

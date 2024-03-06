@@ -12,12 +12,12 @@ function Naviagation() {
           </Link>
         </li>
         <li>
-          <Link className="naviagator__detail" to="/quotation">
+          <Link className="naviagator__detail" to="/content">
             Giới thiệu
           </Link>
         </li>
         <li>
-          <Link className="naviagator__detail" to="/contractor">
+          <Link className="naviagator__detail" to="/quotation">
             Báo giá
           </Link>
         </li>
