@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Form, Input } from "antd";
 import "./Contact.css";
 export default function () {
   const onFinish = (values) => {

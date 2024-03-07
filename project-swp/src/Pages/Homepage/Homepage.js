@@ -5,7 +5,7 @@ import "./Homepage.css";
 import ContentUpperHomepage from "../../Components/contentUpperHomepage/ContentUpperHomepage";
 import ContentMiddleHomepage from "../../Components/contentMiddleHomepage/ContentMiddleHomepage";
 import ContentLowerHomepage from "../../Components/contentLowerHomepage.js/ContentLowerHomepage";
-import Footer from "../../Components/footer/Footer";
+import Footer from "../../Components/Footer/Footer";
 
 export default function Homepage() {
   return (
