@@ -85,6 +85,8 @@
   font-size: 19px;
   font-weight: 700;
   cursor: pointer;
+  outline: none;
+  border: none;
 }
 
 .signInChoice {
@@ -97,7 +99,13 @@
   color:white;
 }
 
+.signInChoiceButton {
+  margin: 0 0 0 5px;
+}
 
-.signInChoiceButton{
 
+.signInChoice{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

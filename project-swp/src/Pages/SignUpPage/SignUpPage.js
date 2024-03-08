@@ -1,6 +1,7 @@
+/** @format */
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import "./SignUpPage.css";
 
 import backgroundImage from "../../assets/signinup_background.png";
@@ -10,6 +11,8 @@ import password_icon from "../../assets/password.png";
 import axios from "axios";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
+import { useUsers } from "../../Services/Hooks/useUsers";
+import { Spin, message } from "antd";
 
 function SignUpPage() {
   const backgroundStyle = {
@@ -22,23 +25,31 @@ function SignUpPage() {
   const [username, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const { onSignup } = useUsers();
+
+  const handleSignUp = async () => {
+    setLoading(true);
+    await onSignup(username, email, password);
+    setLoading(false);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:3001/signup", {
-        username,
-        email,
-        password,
-      })
-      .then((res) => {
-        console.log(res.data);
-        navigate("/signin");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+
+    const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+    const emailErr = !emailRegex.test(email);
+
+    const userNameErr = username.length < 5;
+    const passwordErr = password.length < 8;
+
+    if (userNameErr || emailErr || passwordErr) {
+      userNameErr && message.error("Username phải có ít nhất 5 ký tự");
+      emailErr && message.error("Email không hợp lệ");
+      passwordErr && message.error("Password phải có ít nhất 8 ký tự");
+    } else {
+      handleSignUp();
+    }
   };
 
   return (
@@ -54,8 +65,12 @@ function SignUpPage() {
             <form onSubmit={handleSubmit}>
               <div className="inputs">
                 <div className="input">
-                  <img src={user_icon} alt="user" />
+                  <img
+                    src={user_icon}
+                    alt="user"
+                  />
                   <input
+                    style={{ color: "white" }}
                     type="text"
                     placeholder="Username"
                     value={username}
@@ -63,8 +78,12 @@ function SignUpPage() {
                   />
                 </div>
                 <div className="input">
-                  <img src={email_icon} alt="email" />
+                  <img
+                    src={email_icon}
+                    alt="email"
+                  />
                   <input
+                    style={{ color: "white" }}
                     type="email"
                     placeholder="Email"
                     value={email}
@@ -72,8 +91,12 @@ function SignUpPage() {
                   />
                 </div>
                 <div className="input">
-                  <img src={password_icon} alt="password" />
+                  <img
+                    src={password_icon}
+                    alt="password"
+                  />
                   <input
+                    style={{ color: "white" }}
                     type="password"
                     placeholder="Password"
                     value={password}
@@ -83,16 +106,18 @@ function SignUpPage() {
               </div>
               <div className="signInChoice">
                 <p className="signInChoiceText">Đã có tài khoản?</p>
-                <Link to="/signin" className="signInChoiceButton">
+                <Link
+                  to="/signin"
+                  className="signInChoiceButton"
+                >
                   Đăng nhập
                 </Link>
               </div>
+
               <div className="submit-container">
-                <div className="submit">
-                  <button type="submit" className="submit-button">
-                    Đăng Ký
-                  </button>
-                </div>
+                <button className="submit">
+                  <Spin spinning={loading}>Đăng Ký</Spin>
+                </button>
               </div>
             </form>
           </div>

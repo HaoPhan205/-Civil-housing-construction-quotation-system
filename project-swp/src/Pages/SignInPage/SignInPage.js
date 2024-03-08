@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react";
 import "./SignInPage.css";
 import { Link, useNavigate } from "react-router-dom";
@@ -8,29 +10,23 @@ import user_icon from "../../assets/person.png";
 import password_icon from "../../assets/password.png";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
+import { useUsers } from "../../Services/Hooks/useUsers";
+import { Spin } from "antd";
 
 function SignInPage() {
   const [username, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const { onLogIn } = useUsers();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:3001/signin", {
-        username,
-        password,
-      })
-      .then((res) => {
-        if (res.data === "success") {
-          navigate("/");
-        } else {
-          console.log(res.data);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+
+    setLoading(true);
+    await onLogIn(username, password);
+    setLoading(false);
   };
   return (
     <div>
@@ -44,7 +40,10 @@ function SignInPage() {
           <form onSubmit={handleSubmit}>
             <div className="inputs">
               <div className="input">
-                <img src={user_icon} alt="user" />
+                <img
+                  src={user_icon}
+                  alt="user"
+                />
                 <input
                   type="text"
                   placeholder="Username"
@@ -53,7 +52,10 @@ function SignInPage() {
                 />
               </div>
               <div className="input">
-                <img src={password_icon} alt="password" />
+                <img
+                  src={password_icon}
+                  alt="password"
+                />
                 <input
                   type="password"
                   placeholder="Password"
@@ -64,11 +66,12 @@ function SignInPage() {
             </div>
 
             <div className="submit-container">
-              <div className="submit">
-                <button type="submit" className="submit-button">
-                  Đăng nhập
-                </button>
-              </div>
+              <button
+                className="submit"
+                type="submit"
+              >
+                <Spin spinning={loading}>Đăng nhập</Spin>
+              </button>
             </div>
           </form>
           <p>Chưa có tài khoản?</p>
