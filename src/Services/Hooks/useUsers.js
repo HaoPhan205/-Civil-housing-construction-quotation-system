@@ -11,7 +11,7 @@ const endPoint = "https://65eb419b43ce164189339311.mockapi.io/users";
 
 export const useUsers = () => {
   const { setUser, user } = useContext(Data);
-  const { saveToStorage } = useStorage();
+  const { saveToStorage, removeFromStorage } = useStorage();
   const navigate = useNavigate();
 
   const lookUpUserByUserName = async (username) => {
@@ -57,6 +57,7 @@ export const useUsers = () => {
   const onLogOut = () => {
     message.success("Đã đăng xuất khỏi tài khoản");
     setUser(null);
+    removeFromStorage()
   };
 
   const onLogIn = async (username, password) => {
