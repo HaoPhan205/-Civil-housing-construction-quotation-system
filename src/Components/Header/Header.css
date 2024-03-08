@@ -6,3 +6,9 @@
     height:5em;
     font-weight: 600;
 }
+
+.welcome {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+}
