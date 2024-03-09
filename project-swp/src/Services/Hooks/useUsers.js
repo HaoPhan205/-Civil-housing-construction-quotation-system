@@ -57,7 +57,7 @@ export const useUsers = () => {
   const onLogOut = () => {
     message.success("Đã đăng xuất khỏi tài khoản");
     setUser(null);
-    removeFromStorage()
+    removeFromStorage("user")
   };
 
   const onLogIn = async (username, password) => {
