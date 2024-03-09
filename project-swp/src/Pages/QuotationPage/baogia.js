@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import "./baogia.css";
 import { Row, Col, Select, Spin } from "antd";
 import { useBaoGia } from "../../Services/Hooks/useBaoGia";
+import { useNavigate } from "react-router-dom";
+import { useUsers } from "../../Services/Hooks/useUsers";
 
 const BaoGia = () => {
   const defaultData = {
@@ -23,6 +25,8 @@ const BaoGia = () => {
     getBaoGiaByCurrUser,
   } = useBaoGia();
 
+  const { getCurrUser } = useUsers();
+
   const [data, setData] = useState(defaultData);
 
   const [baogiaData, setBaoGiaData] = useState(null);
@@ -30,6 +34,14 @@ const BaoGia = () => {
   const [oldBaoGiaData, setOldBaoGiaData] = useState([]);
 
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (getCurrUser()?.role === 0) {
+      navigate("/");
+    }
+  }, [getCurrUser()]);
 
   useEffect(() => {
     getBaoGiaByCurrUser(setOldBaoGiaData);
