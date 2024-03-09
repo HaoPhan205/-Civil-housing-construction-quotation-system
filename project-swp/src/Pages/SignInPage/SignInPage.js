@@ -30,7 +30,6 @@ function SignInPage() {
   };
   return (
     <div>
-      <Header />
       <div className="container-signup">
         <div className="signin">
           <div className="header-signup">
@@ -48,7 +47,7 @@ function SignInPage() {
                   type="text"
                   placeholder="Username"
                   value={username}
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => setName(e.target.value.trim())}
                 />
               </div>
               <div className="input">
@@ -60,7 +59,7 @@ function SignInPage() {
                   type="password"
                   placeholder="Password"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => setPassword(e.target.value.trim())}
                 />
               </div>
             </div>
@@ -74,8 +73,15 @@ function SignInPage() {
               </button>
             </div>
           </form>
-          <p>Chưa có tài khoản?</p>
-          <Link to="/signup">Đăng ký</Link>
+          <div className="askSignUp">
+            <span>Chưa có tài khoản?</span>
+            <Link
+              to="/signup"
+              style={{ margin: "0 0 0 6px" }}
+            >
+              Đăng ký
+            </Link>
+          </div>
         </div>
       </div>
       <Footer />

@@ -7,9 +7,11 @@ import FotgtPassword from "./Pages/ForgotPassword/ForgotPassword";
 import { Routes, Route } from "react-router-dom";
 import SignUpPage from "./Pages/SignUpPage/SignUpPage";
 import SignInPage from "./Pages/SignInPage/SignInPage";
-import Quotation from "./Pages/QuotationPage/baogia";
 import Contact from "./Pages/Contact/Contact";
 import { useStorage } from "./Services/Hooks/useStorage";
+import BaoGia from "./Pages/QuotationPage/BaoGia";
+import Header from "./Components/Header/Header";
+import { Admin } from "./Pages/Admin/Admin";
 
 export const Data = createContext(null);
 function App() {
@@ -20,6 +22,7 @@ function App() {
   return (
     <div className="App">
       <Data.Provider value={{ user, setUser }}>
+        <Header />
         <Routes>
           <Route
             path="/"
@@ -38,12 +41,16 @@ function App() {
             element={<SignUpPage />}
           />
           <Route
-            path="/quotation"
-            element={<Quotation />}
+            path="/baogia"
+            element={<BaoGia />}
           />
           <Route
             path="/contact"
             element={<Contact />}
+          />
+          <Route
+            path="/admin"
+            element={<Admin />}
           />
         </Routes>
       </Data.Provider>

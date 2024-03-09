@@ -118,3 +118,9 @@
   justify-content: center;
   align-items: center;
 }
+
+.askSignUp {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 export default function ContentUpperHomepage() {
     return (
-        <div className='container'>
+        <div className='container' id="about">
             <div className="section-header">
                 <h2 className="section-title">VỀ CHÚNG TÔI</h2>
                 <div className="line"></div>

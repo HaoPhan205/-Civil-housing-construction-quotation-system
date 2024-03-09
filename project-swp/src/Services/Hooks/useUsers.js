@@ -57,7 +57,7 @@ export const useUsers = () => {
   const onLogOut = () => {
     message.success("Đã đăng xuất khỏi tài khoản");
     setUser(null);
-    removeFromStorage("user")
+    removeFromStorage("user");
   };
 
   const onLogIn = async (username, password) => {
@@ -83,5 +83,14 @@ export const useUsers = () => {
     return user;
   };
 
-  return { onSignup, getCurrUser, onLogOut, onLogIn };
+  const getAllUsers = (setData, setLoading) => {
+    setLoading(true)
+    
+    axios.get(endPoint)
+      .then((res) => setData(res.data))
+      .catch(err => console.log(err))
+      .finally(() => setLoading(false))
+  };
+
+  return { onSignup, getCurrUser, onLogOut, onLogIn, getAllUsers };
 };

@@ -1,28 +1,53 @@
+/** @format */
+
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Naviagation.css";
+import { useUsers } from "../../Services/Hooks/useUsers";
 
 function Naviagation() {
+  const { getCurrUser } = useUsers();
   return (
     <div className="naviagator">
       <ul>
         <li>
-          <Link className="naviagator__detail" to="/">
+          <Link
+            className="naviagator__detail"
+            to="/"
+          >
             Trang chủ
           </Link>
         </li>
         <li>
-          <Link className="naviagator__detail" to="/content">
+          <a
+            className="naviagator__detail"
+            href="#about"
+          >
             Giới thiệu
-          </Link>
+          </a>
         </li>
         <li>
-          <Link className="naviagator__detail" to="/quotation">
-            Báo giá
+          {getCurrUser()?.role === 0 ? (
+            <Link
+            className="naviagator__detail"
+            to="/admin"
+          >
+            Quản lý
           </Link>
+          ) : (
+            <Link
+              className="naviagator__detail"
+              to="/baogia"
+            >
+              Báo giá
+            </Link>
+          )}
         </li>
         <li>
-          <Link className="naviagator__detail" to="/contact">
+          <Link
+            className="naviagator__detail"
+            to="/contact"
+          >
             Liên hệ
           </Link>
         </li>

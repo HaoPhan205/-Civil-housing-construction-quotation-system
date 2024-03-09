@@ -1,0 +1,115 @@
+/** @format */
+import { message } from "antd";
+import { useUsers } from "./useUsers";
+import axios from "axios";
+import { useStorage } from "./useStorage";
+
+const endPoint = "https://65eb419b43ce164189339311.mockapi.io/baogia";
+
+export const useBaoGia = () => {
+  const { getCurrUser } = useUsers();
+  const { saveToStorage, getFromStorage } = useStorage();
+
+  const updateChangeOption = (changeType, newValue, data) => {
+    switch (changeType) {
+      case "loainha":
+        return { ...data, loainha: newValue };
+      case "hinhthuc":
+        return { ...data, hinhthuc: newValue };
+      case "dai":
+        return { ...data, dai: Number(newValue) };
+      case "rong":
+        return { ...data, rong: Number(newValue) };
+      case "sotang":
+        return { ...data, sotang: Number(newValue) };
+      case "loaimong":
+        return { ...data, loaimong: newValue };
+      case "loaimai":
+        return { ...data, loaimai: newValue };
+      default:
+        return;
+    }
+  };
+
+  const calculateInfo = (data) => {
+    // Validate
+    const daiErr = data.dai <= 0;
+    const rongErr = data.rong <= 0;
+    const tangErr = data.sotang <= 0;
+
+    if (daiErr || rongErr || tangErr) {
+      message.error("Chiều dài, chiều rộng và số tầng phải lớn hơn 0");
+    } else {
+      const dientichtang = data.dai * data.rong;
+      const mong = (data.dai * data.rong) / 2;
+      const mai = (data.dai + data.rong) * 2;
+      const tongdientich = dientichtang * data.sotang + mong + mai;
+      const dongia = 3400000;
+
+      const baogiaInfo = {
+        dai: data.dai,
+        rong: data.rong,
+        dientichtang: dientichtang,
+        mong: mong,
+        mai: mai,
+        tongdientich: tongdientich,
+        dongia: dongia,
+        tongtien: dongia * tongdientich,
+        username: getCurrUser() ? getCurrUser().username : null,
+      };
+      return baogiaInfo;
+    }
+  };
+
+  const handleSaveBaoGia = async (data) => {
+    if (data.username) {
+      await axios
+        .post(endPoint, data)
+        .then((res) => message.success("Lưu thành công"))
+        .catch((err) => console.log(err));
+    } else {
+      saveToStorage("baogia", data);
+      message.error("Bạn cần đăng nhập trước để lưu");
+    }
+  };
+
+  const getSavedBaoGia = () => {
+    const dataFromStorage = getFromStorage("baogia");
+    if (!dataFromStorage.username && getCurrUser()) {
+      dataFromStorage.username = getCurrUser().username;
+    }
+    return dataFromStorage ? dataFromStorage : null;
+  };
+
+  const getBaoGiaByCurrUser = (setOldBaoGiaData) => {
+    if (getCurrUser()) {
+      axios
+        .get(`${endPoint}?username=${getCurrUser().username}`)
+        .then((res) => {
+          setOldBaoGiaData(res.data);
+        })
+        .catch((err) => console.log(err));
+    }
+  };
+
+  const getBaoGiaByUsername = async (username) => {
+    let returnedData = null;
+    await axios
+      .get(`${endPoint}?username=${username}`)
+      .then((res) => {
+        returnedData = res.data;
+      })
+      .catch((err) => console.log(err));
+
+    return returnedData;
+  };
+
+  return {
+    updateChangeOption,
+    calculateInfo,
+    handleSaveBaoGia,
+    getSavedBaoGia,
+    getBaoGiaByCurrUser,
+    getBaoGiaByUsername,
+  };
+};

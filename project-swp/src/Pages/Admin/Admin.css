@@ -1,0 +1,10 @@
+.admin {
+    padding: 4.5vw;
+    box-sizing: border-box;
+}
+
+.titleBaoGiaUser {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 10px 0 10px 7px;
+}

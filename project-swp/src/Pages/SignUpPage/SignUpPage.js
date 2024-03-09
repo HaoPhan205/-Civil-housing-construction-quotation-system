@@ -54,7 +54,6 @@ function SignUpPage() {
 
   return (
     <div>
-      <Header />
       <div style={backgroundStyle}>
         <div className="container-signup">
           <div className="signup">
@@ -74,7 +73,7 @@ function SignUpPage() {
                     type="text"
                     placeholder="Username"
                     value={username}
-                    onChange={(e) => setName(e.target.value)}
+                    onChange={(e) => setName(e.target.value.trim())}
                   />
                 </div>
                 <div className="input">
@@ -87,7 +86,7 @@ function SignUpPage() {
                     type="email"
                     placeholder="Email"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => setEmail(e.target.value.trim())}
                   />
                 </div>
                 <div className="input">
@@ -100,7 +99,7 @@ function SignUpPage() {
                     type="password"
                     placeholder="Password"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => setPassword(e.target.value.trim())}
                   />
                 </div>
               </div>

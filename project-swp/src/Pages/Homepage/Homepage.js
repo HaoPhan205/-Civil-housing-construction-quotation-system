@@ -10,7 +10,6 @@ import Footer from "../../Components/Footer/Footer";
 export default function Homepage() {
   return (
     <div className="homepage">
-      <Header />
       <Carousel />
       <ContentUpperHomepage />
       <ContentMiddleHomepage />
