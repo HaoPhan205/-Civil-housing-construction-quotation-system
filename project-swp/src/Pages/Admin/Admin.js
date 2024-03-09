@@ -89,37 +89,45 @@ export const Admin = () => {
 
   const columns2 = [
     {
-      title: "Dài x rộng",
-      key: "daixrong",
-      render: (data) => `${data.dai} x ${data.rong}`,
+      title: "Thông tin",
+      key: "thongtin",
+      render: (data) => (
+        <>{data.loainha} | {data.hinhthuc} | {data.dai} x {data.rong} m</>
+      ),
     },
     {
-      title: "Diện tích mỗi tầng",
-      dataIndex: "dientichtang",
+      title: "Diện tích tầng",
       key: "dientichtang",
+      render: (data) => (
+        <>{data.dientichtang}m² x {data.sotang}</>
+      )
     },
     {
-      title: "Diện tích móng",
-      dataIndex: "mong",
+      title: "Móng",
       key: "mong",
+      render: (data) => (
+        <>{data.loaimong} - {data.mong}m²</>
+      )
     },
     {
-      title: "Diện tích mái",
-      dataIndex: "mai",
+      title: "Mái",
       key: "mai",
+      render: (data) => (
+        <>{data.loaimai} - {data.mai}m²</>
+      )
     },
     {
       title: "Tổng diện tích",
-      dataIndex: "tongdientich",
       key: "tongdientich",
+      dataIndex: "tongdientich",
     },
-    {
-      title: "Đơn giá",
-      dataIndex: "dongia",
-      key: "dongia",
-      render: (dongia) =>
-        dongia.toLocaleString().replace(",", ".").replace(/\./g, ","),
-    },
+    // {
+    //   title: "Đơn giá",
+    //   dataIndex: "dongia",
+    //   key: "dongia",
+    //   render: (dongia) =>
+    //     dongia.toLocaleString().replace(",", ".").replace(/\./g, ","),
+    // },
     {
       title: "Tổng tiền",
       dataIndex: "tongtien",

@@ -8,7 +8,7 @@ const endPoint = "https://65eb419b43ce164189339311.mockapi.io/baogia";
 
 export const useBaoGia = () => {
   const { getCurrUser } = useUsers();
-  const { saveToStorage, getFromStorage } = useStorage();
+  const { saveToStorage, getFromStorage, removeFromStorage } = useStorage();
 
   const updateChangeOption = (changeType, newValue, data) => {
     switch (changeType) {
@@ -31,13 +31,18 @@ export const useBaoGia = () => {
     }
   };
 
-  const calculateInfo = (data) => {
+  const findByIdAndKey = (arr, key) => {
+    return arr.find((item) => item.value === key);
+  };
+
+  const calculateInfo = (data, baogiaOptionArr) => {
     // Validate
     const daiErr = data.dai <= 0;
     const rongErr = data.rong <= 0;
     const tangErr = data.sotang <= 0;
 
     if (daiErr || rongErr || tangErr) {
+      console.log(data);
       message.error("Chiều dài, chiều rộng và số tầng phải lớn hơn 0");
     } else {
       const dientichtang = data.dai * data.rong;
@@ -45,8 +50,24 @@ export const useBaoGia = () => {
       const mai = (data.dai + data.rong) * 2;
       const tongdientich = dientichtang * data.sotang + mong + mai;
       const dongia = 3400000;
+      const loainha = findByIdAndKey(baogiaOptionArr[0].options, data.loainha).label;
+      const hinhthuc = findByIdAndKey(
+        baogiaOptionArr[1].options,
+        data.hinhthuc
+      ).label;
+      const sotang = data.sotang;
+      const loaimong = findByIdAndKey(
+        baogiaOptionArr[5].options,
+        data.loaimong
+      ).label;
+      const loaimai = findByIdAndKey(baogiaOptionArr[6].options, data.loaimai).label;
 
       const baogiaInfo = {
+        loainha,
+        hinhthuc,
+        sotang,
+        loaimong,
+        loaimai,
         dai: data.dai,
         rong: data.rong,
         dientichtang: dientichtang,
@@ -57,6 +78,8 @@ export const useBaoGia = () => {
         tongtien: dongia * tongdientich,
         username: getCurrUser() ? getCurrUser().username : null,
       };
+
+      console.log(baogiaInfo);
       return baogiaInfo;
     }
   };
@@ -65,7 +88,10 @@ export const useBaoGia = () => {
     if (data.username) {
       await axios
         .post(endPoint, data)
-        .then((res) => message.success("Lưu thành công"))
+        .then((res) => {
+          message.success("Lưu thành công");
+          removeFromStorage("baogia");
+        })
         .catch((err) => console.log(err));
     } else {
       saveToStorage("baogia", data);
@@ -75,6 +101,9 @@ export const useBaoGia = () => {
 
   const getSavedBaoGia = () => {
     const dataFromStorage = getFromStorage("baogia");
+    if (!dataFromStorage) {
+      return null;
+    }
     if (!dataFromStorage.username && getCurrUser()) {
       dataFromStorage.username = getCurrUser().username;
     }
@@ -88,7 +117,10 @@ export const useBaoGia = () => {
         .then((res) => {
           setOldBaoGiaData(res.data);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+          setOldBaoGiaData([]);
+        });
     }
   };
 
@@ -99,9 +131,20 @@ export const useBaoGia = () => {
       .then((res) => {
         returnedData = res.data;
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
 
     return returnedData;
+  };
+
+  const removeBaoGia = async (id) => {
+    await axios
+      .delete(`${endPoint}/${id}`)
+      .then((res) => {
+        message.success('Đã xoá báo giá')
+      })
+      .catch((err) => console.log(err));
   };
 
   return {
@@ -111,5 +154,6 @@ export const useBaoGia = () => {
     getSavedBaoGia,
     getBaoGiaByCurrUser,
     getBaoGiaByUsername,
+    removeBaoGia,
   };
 };

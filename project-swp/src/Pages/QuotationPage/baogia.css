@@ -122,6 +122,7 @@ input {
   padding: 0;
   margin: 0;
   width: 100%;
+  margin: 5px 0 0 0;
 }
 
 .baogiaItem {
@@ -144,4 +145,25 @@ input {
 .selected {
   color: white;
   background-color: #1B1A55;
+}
+
+.deleteIcon {
+  font-size: 14px;
+  margin: 0 0 0 7px;
+  cursor: pointer;
+  transition: all 0.12s linear;
+}
+
+.deleteIcon:hover {
+  color: red
+}
+
+.totalMoney {
+  margin: 8px 0 0 0;
+  padding: 8px 0 0 15px;
+  box-sizing: border-box;
+  border-top: 1px solid gray;
+  font-size: 18px;
+  font-weight: 600;
+  width: 350px;
 }

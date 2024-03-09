@@ -2,7 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 import "./baogia.css";
-import { Row, Col, Select, Spin } from "antd";
+import { Row, Col, Select, Spin, Popconfirm } from "antd";
+import { CloseOutlined } from "@ant-design/icons";
 import { useBaoGia } from "../../Services/Hooks/useBaoGia";
 import { useNavigate } from "react-router-dom";
 import { useUsers } from "../../Services/Hooks/useUsers";
@@ -11,8 +12,8 @@ const BaoGia = () => {
   const defaultData = {
     loainha: "nhapho",
     hinhthuc: "trongoi",
-    dai: 0,
-    rong: 0,
+    dai: "",
+    rong: "",
     sotang: 1,
     loaimong: "daicoc",
     loaimai: "btct",
@@ -23,17 +24,21 @@ const BaoGia = () => {
     handleSaveBaoGia,
     getSavedBaoGia,
     getBaoGiaByCurrUser,
+    removeBaoGia,
   } = useBaoGia();
 
   const { getCurrUser } = useUsers();
 
   const [data, setData] = useState(defaultData);
 
-  const [baogiaData, setBaoGiaData] = useState(null);
+  const [baogiaData, setBaoGiaData] = useState(getSavedBaoGia());
 
   const [oldBaoGiaData, setOldBaoGiaData] = useState([]);
 
   const [loading, setLoading] = useState(false);
+  const [deleteLoading, setDeleteLoading] = useState(false);
+
+  const [savedBaoGia, setSavedBaoGia] = useState(false);
 
   const navigate = useNavigate();
 
@@ -52,19 +57,29 @@ const BaoGia = () => {
   };
 
   const handleSubmit = () => {
-    setBaoGiaData(calculateInfo(data));
+    setBaoGiaData(calculateInfo(data, baogiaOptionArr));
     setData(defaultData);
+    setSavedBaoGia(false);
   };
 
   const handleSave = async () => {
     setLoading(true);
     await handleSaveBaoGia(baogiaData);
-    console.log(123);
+    getBaoGiaByCurrUser(setOldBaoGiaData);
     setLoading(false);
+    setSavedBaoGia(true);
   };
 
   const handleClickOldBaoGia = (baogia) => {
     setBaoGiaData(baogia);
+  };
+
+  const handleDeleteBaoGia = async (id) => {
+    setDeleteLoading(true);
+    await removeBaoGia(id);
+    getBaoGiaByCurrUser(setOldBaoGiaData);
+    setDeleteLoading(false);
+    setBaoGiaData(null);
   };
 
   // Options
@@ -93,20 +108,22 @@ const BaoGia = () => {
     {
       title: "Chiều dài (m²)",
       value: data.dai,
-      handleFunction: (newValue) => handleSelectOptionChange("dai", newValue),
+      handleFunction: (newValue) =>
+        handleSelectOptionChange("dai", newValue.trim()),
       options: null,
     },
     {
       title: "Chiều rộng (m²)",
       value: data.rong,
-      handleFunction: (newValue) => handleSelectOptionChange("rong", newValue),
+      handleFunction: (newValue) =>
+        handleSelectOptionChange("rong", newValue.trim()),
       options: null,
     },
     {
       title: "Số tầng",
       value: data.sotang,
       handleFunction: (newValue) =>
-        handleSelectOptionChange("sotang", newValue),
+        handleSelectOptionChange("sotang", newValue.trim()),
       options: null,
     },
     {
@@ -151,8 +168,13 @@ const BaoGia = () => {
                     {baogiaData.rong} m:
                   </div>
                   <ol className="baogiaList">
+                    <li>Loại nhà: {baogiaData.loainha}</li>
+                    <li>Hình thức xây: {baogiaData.hinhthuc}</li>
+                    <li>Số tầng: {baogiaData.sotang}</li>
                     <li>Diện tích các tầng: {baogiaData.dientichtang} m²</li>
+                    <li>Loại móng: {baogiaData.loaimong}</li>
                     <li>Móng: {baogiaData.mong} m²</li>
+                    <li>Loại mái: {baogiaData.loaimai}</li>
                     <li>Mái: {baogiaData.mai} m²</li>
                     <li>Tổng diện tích: {baogiaData.tongdientich} m²</li>
                     <li>
@@ -163,16 +185,16 @@ const BaoGia = () => {
                         .replace(/\./g, ",")}{" "}
                       VND
                     </li>
-                    <li>
-                      Tổng tiền:{" "}
-                      {baogiaData.tongtien
-                        .toLocaleString()
-                        .replace(",", ".")
-                        .replace(/\./g, ",")}{" "}
-                      VND
-                    </li>
                   </ol>
-                  {!baogiaData?.id && (
+                  <div className="totalMoney">
+                    Tổng tiền:{" "}
+                    {baogiaData.tongtien
+                      .toLocaleString()
+                      .replace(",", ".")
+                      .replace(/\./g, ",")}{" "}
+                    VND
+                  </div>
+                  {!baogiaData?.id && !savedBaoGia && (
                     <button
                       className="saveBaoGiaBtn"
                       onClick={handleSave}
@@ -185,20 +207,29 @@ const BaoGia = () => {
             )}
           </Spin>
 
-          <div className="textTitle">Các báo giá đã lưu</div>
-          <div className="baogiaContainer">
-            {oldBaoGiaData?.map((data) => (
-              <div
-                key={data.id}
-                className={`baogiaItem ${
-                  baogiaData?.id && baogiaData?.id === data?.id && "selected"
-                }`}
-                onClick={() => handleClickOldBaoGia(data)}
-              >
-                Báo giá nhà {data.dai} x {data.rong} m
-              </div>
-            ))}
-          </div>
+          <Spin spinning={deleteLoading}>
+            <div className="textTitle">Các báo giá đã lưu</div>
+            <div className="baogiaContainer">
+              {oldBaoGiaData?.map((data) => (
+                <div
+                  key={data.id}
+                  className={`baogiaItem ${
+                    baogiaData?.id && baogiaData?.id === data?.id && "selected"
+                  }`}
+                  onClick={() => handleClickOldBaoGia(data)}
+                >
+                  Báo giá nhà {data.dai} x {data.rong} m
+                  <Popconfirm
+                    title="Bạn có chắc chắn muốn xoá?"
+                    onConfirm={() => handleDeleteBaoGia(data.id)}
+                    cancelText="Huỷ"
+                  >
+                    <CloseOutlined className="deleteIcon" />
+                  </Popconfirm>
+                </div>
+              ))}
+            </div>
+          </Spin>
         </Col>
         <Col
           span={0}
