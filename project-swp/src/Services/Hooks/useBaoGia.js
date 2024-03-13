@@ -4,7 +4,7 @@ import { useUsers } from "./useUsers";
 import axios from "axios";
 import { useStorage } from "./useStorage";
 
-const endPoint = "https://65eb419b43ce164189339311.mockapi.io/baogia";
+const endPoint = "https://65efe5b4ead08fa78a512946.mockapi.io/baogia";
 
 export const useBaoGia = () => {
   const { getCurrUser } = useUsers();
@@ -36,7 +36,6 @@ export const useBaoGia = () => {
   };
 
   const calculateInfo = (data, baogiaOptionArr) => {
-    // Validate
     const daiErr = data.dai <= 0;
     const rongErr = data.rong <= 0;
     const tangErr = data.sotang <= 0;
@@ -50,7 +49,10 @@ export const useBaoGia = () => {
       const mai = (data.dai + data.rong) * 2;
       const tongdientich = dientichtang * data.sotang + mong + mai;
       const dongia = 3400000;
-      const loainha = findByIdAndKey(baogiaOptionArr[0].options, data.loainha).label;
+      const loainha = findByIdAndKey(
+        baogiaOptionArr[0].options,
+        data.loainha
+      ).label;
       const hinhthuc = findByIdAndKey(
         baogiaOptionArr[1].options,
         data.hinhthuc
@@ -60,7 +62,10 @@ export const useBaoGia = () => {
         baogiaOptionArr[5].options,
         data.loaimong
       ).label;
-      const loaimai = findByIdAndKey(baogiaOptionArr[6].options, data.loaimai).label;
+      const loaimai = findByIdAndKey(
+        baogiaOptionArr[6].options,
+        data.loaimai
+      ).label;
 
       const baogiaInfo = {
         loainha,
@@ -142,7 +147,7 @@ export const useBaoGia = () => {
     await axios
       .delete(`${endPoint}/${id}`)
       .then((res) => {
-        message.success('Đã xoá báo giá')
+        message.success("Đã xoá báo giá");
       })
       .catch((err) => console.log(err));
   };

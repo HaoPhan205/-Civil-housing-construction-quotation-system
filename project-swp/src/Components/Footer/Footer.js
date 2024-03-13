@@ -15,23 +15,23 @@ export default function Footer() {
             <div className="section1-upper">
               <ul>
                 <li>
-                  <Link className="section1-upper-detail" to="/quotation">
+                  <Link className="section1-upper-detail" to="/baogia">
                     Báo giá
                   </Link>
                 </li>
                 <li>
-                  <Link className="section1-upper-detail" to="/blog">
-                    Blog
+                  <Link className="section1-upper-detail" to="/dichvu">
+                    Cung cấp dịch vụ
                   </Link>
                 </li>
                 <li>
-                  <Link className="section1-upper-detail" to="/criteria">
-                    Tiêu chí hoạt động
+                  <Link className="section1-upper-detail" to="/thanhtoan">
+                    Tiến độ thanh toán
                   </Link>
                 </li>
                 <li>
-                  <Link className="section1-upper-detail" to="/legal">
-                    Chính sách & pháp lý
+                  <Link className="section1-upper-detail" to="/baohanh">
+                    Chính sách bảo hành
                   </Link>
                 </li>
               </ul>
@@ -39,21 +39,16 @@ export default function Footer() {
 
             <div className="section1-lower">
               <ul>
-                <li>Hotline: 0903987732 - 0883742342</li>
+                <li>Hotline: 0354019580</li>
                 <li>
-                  Location: Lô E2a-7, Đường D1, Long Thạnh Mỹ, Thành Phố Thủ
-                  Đức, Thành phố Hồ Chí Minh{" "}
+                  Địa chỉ: Lô E2a-7, Đường D1, Long Thạnh Mỹ, Thành Phố Thủ Đức,
+                  Thành phố Hồ Chí Minh{" "}
                 </li>
+                <li>email: buildquote.experts@gmail.com</li>
               </ul>
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="divider"></div>
-
-      <div className="section2">
-        <p>© Copyright 2024, All Rights Reserved by BuildQuoteExperts</p>
       </div>
     </div>
   );

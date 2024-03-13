@@ -12,8 +12,15 @@ import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import { useUsers } from "../../Services/Hooks/useUsers";
 import { Spin } from "antd";
+import backgroundImage from "../../assets/signinup_background.png";
 
 function SignInPage() {
+  const backgroundStyle = {
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+  };
   const [username, setName] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -29,7 +36,7 @@ function SignInPage() {
     setLoading(false);
   };
   return (
-    <div>
+    <div style={backgroundStyle}>
       <div className="container-signup">
         <div className="signin">
           <div className="header-signup">
@@ -39,10 +46,7 @@ function SignInPage() {
           <form onSubmit={handleSubmit}>
             <div className="inputs">
               <div className="input">
-                <img
-                  src={user_icon}
-                  alt="user"
-                />
+                <img src={user_icon} alt="user" />
                 <input
                   type="text"
                   placeholder="Username"
@@ -51,10 +55,7 @@ function SignInPage() {
                 />
               </div>
               <div className="input">
-                <img
-                  src={password_icon}
-                  alt="password"
-                />
+                <img src={password_icon} alt="password" />
                 <input
                   type="password"
                   placeholder="Password"
@@ -65,20 +66,14 @@ function SignInPage() {
             </div>
 
             <div className="submit-container">
-              <button
-                className="submit"
-                type="submit"
-              >
+              <button className="submit" type="submit">
                 <Spin spinning={loading}>Đăng nhập</Spin>
               </button>
             </div>
           </form>
           <div className="askSignUp">
             <span>Chưa có tài khoản?</span>
-            <Link
-              to="/signup"
-              style={{ margin: "0 0 0 6px" }}
-            >
+            <Link to="/signup" style={{ margin: "0 0 0 6px" }}>
               Đăng ký
             </Link>
           </div>

@@ -8,24 +8,21 @@
         font-family: Unica One,sans-serif;
         font-size: 200%;
     }
-
-
-.logo-fix {
-    img {
-        max-width: 10%;
-        height: auto;
- }
+    .AboutUs-Content{
+        text-align: left;
+        margin: 80px 50px;
+        font-size: 100%;
+       
+    }
+    .AboutUs img{
+        width: 60rem;
+        border-radius: 15px;
+    }
+.head {
+    font-weight: bold;
 }
 .content .title {
     font-family: "Roboto Condensed";
     font-weight: bold;
 
-}
-.AboutUs-Content {
-    text-align: center;
-    font-size: 130%;
-}   
-.head {
-    font-weight: bold;
-    font-size: 150%;
 }

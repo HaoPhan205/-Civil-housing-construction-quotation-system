@@ -7,7 +7,7 @@ import { Data } from "../../App";
 import { useNavigate } from "react-router-dom";
 import { useStorage } from "./useStorage";
 
-const endPoint = "https://65eb419b43ce164189339311.mockapi.io/users";
+const endPoint = "https://65efe5b4ead08fa78a512946.mockapi.io/users";
 
 export const useUsers = () => {
   const { setUser, user } = useContext(Data);
@@ -56,6 +56,7 @@ export const useUsers = () => {
 
   const onLogOut = () => {
     message.success("Đã đăng xuất khỏi tài khoản");
+    navigate("/");
     setUser(null);
     removeFromStorage("user");
   };
@@ -84,12 +85,13 @@ export const useUsers = () => {
   };
 
   const getAllUsers = (setData, setLoading) => {
-    setLoading(true)
-    
-    axios.get(endPoint)
+    setLoading(true);
+
+    axios
+      .get(endPoint)
       .then((res) => setData(res.data))
-      .catch(err => console.log(err))
-      .finally(() => setLoading(false))
+      .catch((err) => console.log(err))
+      .finally(() => setLoading(false));
   };
 
   return { onSignup, getCurrUser, onLogOut, onLogIn, getAllUsers };
