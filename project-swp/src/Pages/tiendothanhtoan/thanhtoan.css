@@ -1,7 +1,6 @@
 .AboutUs{
     text-align: center;
     margin-top: 30px;
-    
     }
     .AboutUs h1{
         text-transform: uppercase;
@@ -9,20 +8,15 @@
         font-size: 200%;
     }
     .AboutUs-Content{
-        text-align: left;
+        text-align: justify;
         margin: 80px 50px;
         font-size: 100%;
-       
     }
-    .AboutUs img{
-        width: 60rem;
-        border-radius: 15px;
-    }
+    
 .head {
     font-weight: bold;
 }
 .content .title {
     font-family: "Roboto Condensed";
     font-weight: bold;
-
 }

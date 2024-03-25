@@ -1,3 +1,38 @@
 * {
     scroll-behavior: smooth;
 }
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .card {
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  .button-detail:hover {
+    background-color: #007BFF; /* Màu sắc khi hover */
+    color: rgb(38, 0, 255);
+    border: 1px solid transparent;
+  }
+  .media:hover {
+    transform: scale(1.05);
+    transition: transform 0.5s ease;
+  }
+
+  .card:hover .content {
+    background-color: #f8f9fa;
+    color: #333;
+  }

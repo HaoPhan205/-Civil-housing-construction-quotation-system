@@ -11,43 +11,28 @@ function Naviagation() {
     <div className="naviagator">
       <ul>
         <li>
-          <Link
-            className="naviagator__detail"
-            to="/"
-          >
+          <Link className="naviagator__detail" to="/">
             Trang chủ
           </Link>
         </li>
         <li>
-          <a
-            className="naviagator__detail"
-            href="#about"
-          >
+          <Link className="naviagator__detail" to="/gioithieu">
             Giới thiệu
-          </a>
+          </Link>
         </li>
         <li>
           {getCurrUser()?.role === 0 ? (
-            <Link
-            className="naviagator__detail"
-            to="/admin"
-          >
-            Quản lý
-          </Link>
+            <Link className="naviagator__detail" to="/admin">
+              Quản lý
+            </Link>
           ) : (
-            <Link
-              className="naviagator__detail"
-              to="/baogia"
-            >
+            <Link className="naviagator__detail" to="/baogia">
               Báo giá
             </Link>
           )}
         </li>
         <li>
-          <Link
-            className="naviagator__detail"
-            to="/contact"
-          >
+          <Link className="naviagator__detail" to="/contact">
             Liên hệ
           </Link>
         </li>

@@ -3,7 +3,6 @@
 import React from "react";
 import "./SignInPage.css";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { useState } from "react";
 
 import user_icon from "../../assets/person.png";

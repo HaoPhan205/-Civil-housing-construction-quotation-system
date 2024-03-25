@@ -167,7 +167,6 @@ const BaoGia = () => {
                       {baogiaData.rong} m:
                     </div>
                     <ol className="baogiaList">
-                      <li>dientichtangtest: {baogiaData.dientichtangtest}</li>
                       <li>Loại nhà: {baogiaData.loainha}</li>
                       <li>Hình thức xây: {baogiaData.hinhthuc}</li>
                       <li>Số tầng: {baogiaData.sotang}</li>

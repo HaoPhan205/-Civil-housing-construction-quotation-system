@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 export default function ContentUpperHomepage() {
   return (
     <div className="container" id="about">
+      <br />
       <div className="section-header">
         <h2 className="section-title">VỀ CHÚNG TÔI</h2>
         <div className="line"></div>
       </div>
-
       <div className="section-content">
         <p>
           BuildQuote Experts được thành lập năm 2024 bởi một nhóm sinh viên Đại

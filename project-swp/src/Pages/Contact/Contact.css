@@ -3,29 +3,24 @@
     margin-top: 30px;
     
     }
-    .AboutUs h1{
+    .AboutUs h2{
         text-transform: uppercase;
-        font-family: Unica One,sans-serif;
-        font-size: 200%;
+        font-size: 300%;
     }
+    .AboutUs img{
+        max-width: 200px;
+        
+    }
+    .AboutUs-Content{
+        font-size: 100%;
+        text-align: center;
+    }   
 
-
-.logo-fix {
-    img {
-        max-width: 10%;
-        height: auto;
- }
-}
+    .Contact-Content {
+        text-align: center;
+        font-size: 150%;
+    }
 .content .title {
-    font-family: "Roboto Condensed";
-    font-weight: bold;
-
-}
-.AboutUs-Content {
-    text-align: center;
-    font-size: 130%;
-}   
-.head {
-    font-weight: bold;
-    font-size: 150%;
-}
+    font-weight: bold;  
+    text-align: center;  
+} 

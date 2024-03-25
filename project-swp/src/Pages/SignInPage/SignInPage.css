@@ -37,6 +37,7 @@
   flex-direction: column;
   background: #eaeaea;
   gap: 25px;
+  color:white;
 }
 .input {
   display: flex;
@@ -45,6 +46,7 @@
   width: 480px;
   height: 80px;
   border-radius: 6px;
+  color:white;
 }
 
 .input img {

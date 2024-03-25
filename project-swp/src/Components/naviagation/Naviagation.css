@@ -17,3 +17,65 @@
     text-align: center;
     font-family: 'Montserrat';
 }   
+
+.navigation {
+    background: linear-gradient(to right, #0052d4, #65c7f7, #9cecfb); 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+  }
+  
+  .navigation ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .navigation li {
+    float: left;
+  }
+  
+  .navigation__detail {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+  }
+  
+  .navigation__detail:hover, .navigation__detail:focus {
+    background-color: rgba(255, 255, 255, 0.2); 
+    color: #ffffff;
+    border-radius: 4px; 
+  }
+  
+  @media screen and (max-width: 600px) {
+    .navigation ul {
+      flex-direction: column;
+    }
+  
+    .navigation__detail {
+      text-align: center; 
+      padding: 12px; 
+    }
+  }
+
+  .navigation__detail::after {
+    content: '';
+    display: block;
+    margin: auto;
+    height: 3px;
+    width: 0px;
+    background: transparent;
+    transition: width 0.5s ease, background-color 0.5s ease;
+  }
+
+  .navigation__detail:hover::after, .navigation__detail:focus::after {
+    width: 100%;
+    background: #ffffff;
+  }
+  

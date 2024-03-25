@@ -16,6 +16,8 @@ import Baohanh from "./Pages/chinhsachbaohanh/baohanh";
 import Footer from "./Components/Footer/Footer";
 import Dichvu from "./Pages/cungcapdichvu.js/dichvu";
 import Thanhtoan from "./Pages/tiendothanhtoan/thanhtoan";
+import useScrollToTop from "./Components/useScrollToTop/useScrollToTop";
+import Gioithieu from "./Pages/GioithieuPage/gioithieu";
 
 export const Data = createContext(null);
 function App() {
@@ -23,6 +25,7 @@ function App() {
   const [user, setUser] = useState(
     getFromStorage("user") ? getFromStorage("user") : null
   );
+  useScrollToTop();
   return (
     <div className="App">
       <Data.Provider value={{ user, setUser }}>
@@ -38,6 +41,7 @@ function App() {
           <Route path="/baohanh" element={<Baohanh />} />
           <Route path="/dichvu" element={<Dichvu />} />
           <Route path="/thanhtoan" element={<Thanhtoan />} />
+          <Route path="/gioithieu" element={<Gioithieu />} />
         </Routes>
         <Footer />
       </Data.Provider>
