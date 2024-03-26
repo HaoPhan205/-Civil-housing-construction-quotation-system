@@ -256,7 +256,7 @@ const BaoGia = () => {
                   </div>
                 ))}
                 <button className="submitBtn" onClick={handleSubmit}>
-                  Tính toán
+                  Yêu cẩu báo giá
                 </button>
               </div>
             </div>
