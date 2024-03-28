@@ -8,9 +8,6 @@ import backgroundImage from "../../assets/signinup_background.png";
 import user_icon from "../../assets/person.png";
 import email_icon from "../../assets/email.png";
 import password_icon from "../../assets/password.png";
-import axios from "axios";
-import Header from "../../Components/Header/Header";
-import Footer from "../../Components/Footer/Footer";
 import { useUsers } from "../../Services/Hooks/useUsers";
 import { Spin, message } from "antd";
 
@@ -64,10 +61,7 @@ function SignUpPage() {
             <form onSubmit={handleSubmit}>
               <div className="inputs">
                 <div className="input">
-                  <img
-                    src={user_icon}
-                    alt="user"
-                  />
+                  <img src={user_icon} alt="user" />
                   <input
                     style={{ color: "white" }}
                     type="text"
@@ -77,10 +71,7 @@ function SignUpPage() {
                   />
                 </div>
                 <div className="input">
-                  <img
-                    src={email_icon}
-                    alt="email"
-                  />
+                  <img src={email_icon} alt="email" />
                   <input
                     style={{ color: "white" }}
                     type="email"
@@ -90,10 +81,7 @@ function SignUpPage() {
                   />
                 </div>
                 <div className="input">
-                  <img
-                    src={password_icon}
-                    alt="password"
-                  />
+                  <img src={password_icon} alt="password" />
                   <input
                     style={{ color: "white" }}
                     type="password"
@@ -105,10 +93,7 @@ function SignUpPage() {
               </div>
               <div className="signInChoice">
                 <p className="signInChoiceText">Đã có tài khoản?</p>
-                <Link
-                  to="/signin"
-                  className="signInChoiceButton"
-                >
+                <Link to="/signin" className="signInChoiceButton">
                   Đăng nhập
                 </Link>
               </div>
@@ -122,7 +107,6 @@ function SignUpPage() {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

@@ -7,8 +7,6 @@ import { useState } from "react";
 
 import user_icon from "../../assets/person.png";
 import password_icon from "../../assets/password.png";
-import Header from "../../Components/Header/Header";
-import Footer from "../../Components/Footer/Footer";
 import { useUsers } from "../../Services/Hooks/useUsers";
 import { Spin } from "antd";
 import backgroundImage from "../../assets/signinup_background.png";
@@ -78,7 +76,6 @@ function SignInPage() {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }
