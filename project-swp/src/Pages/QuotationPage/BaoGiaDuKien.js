@@ -1,5 +1,3 @@
-/* @format 
-
 import React, { useEffect, useState } from "react";
 import "./baogia.css";
 import { Row, Col, Select, Spin, Popconfirm } from "antd";
@@ -7,9 +5,8 @@ import { CloseOutlined } from "@ant-design/icons";
 import { useBaoGia } from "../../Services/Hooks/useBaoGia";
 import { useNavigate } from "react-router-dom";
 import { useUsers } from "../../Services/Hooks/useUsers";
-import ContentMiddleHomepage from "../../Components/contentMiddleHomepage/ContentMiddleHomepage";
 
-const BaoGia = () => {
+const BaoGiaDuKien = () => {
   const defaultData = {
     loainha: "nhapho",
     hinhthuc: "trongoi",
@@ -267,5 +264,4 @@ const BaoGia = () => {
   );
 };
 
-export default BaoGia;
-*/
+export default BaoGiaDuKien;

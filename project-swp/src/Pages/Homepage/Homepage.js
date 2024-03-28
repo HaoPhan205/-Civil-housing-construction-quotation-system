@@ -4,7 +4,7 @@ import "./Homepage.css";
 import ContentUpperHomepage from "../../Components/contentUpperHomepage/ContentUpperHomepage";
 import ContentMiddleHomepage from "../../Components/contentMiddleHomepage/ContentMiddleHomepage";
 import ContentLowerHomepage from "../../Components/contentLowerHomepage.js/ContentLowerHomepage";
-import BaoGia from "../QuotationPage/baogia";
+import BaoGiaDuKien from "../QuotationPage/BaoGiaDuKien";
 
 export default function Homepage() {
   return (
@@ -14,7 +14,7 @@ export default function Homepage() {
       <br />
       <ContentMiddleHomepage />
       <br />
-      <BaoGia />
+      <BaoGiaDuKien />
       <br />
       <ContentLowerHomepage />
     </div>

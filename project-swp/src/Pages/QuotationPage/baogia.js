@@ -152,6 +152,7 @@ const BaoGia = () => {
   return (
     <div>
       <div className="baogia">
+        <div className="title">Thông tin dự án cần báo giá </div>
         <Row className="rowBaoGia">
           <Col span={24} sm={16}>
             <Spin spinning={loading}>
@@ -201,7 +202,7 @@ const BaoGia = () => {
             </Spin>
 
             <Spin spinning={deleteLoading}>
-              <div className="textTitle">Các báo giá đã lưu</div>
+              <div className="textTitle">Các yêu cầu báo giá</div>
               <div className="baogiaContainer">
                 {oldBaoGiaData?.map((data) => (
                   <div
