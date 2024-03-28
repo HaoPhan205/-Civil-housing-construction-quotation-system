@@ -30,6 +30,7 @@ export default function () {
         </div>
       </div>
       <br />
+      <br />
       <ContentMiddleHomepage />
     </div>
   );
