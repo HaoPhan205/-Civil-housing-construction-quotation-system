@@ -44,7 +44,7 @@ export default function Footer() {
                   Địa chỉ: Lô E2a-7, Đường D1, Long Thạnh Mỹ, Thành Phố Thủ Đức,
                   Thành phố Hồ Chí Minh{" "}
                 </li>
-                <li>email: buildquote.experts@gmail.com</li>
+                <li>Email: buildquote.experts@gmail.com</li>
               </ul>
             </div>
           </div>

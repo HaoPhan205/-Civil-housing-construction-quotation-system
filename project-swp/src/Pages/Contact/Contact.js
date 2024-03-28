@@ -1,9 +1,9 @@
 import React from "react";
 import "./Contact.css";
 import { Link } from "react-router-dom";
-import Logo from "../../Components/logo/Logo";
 import ContentMiddleHomepage from "../../Components/contentMiddleHomepage/ContentMiddleHomepage";
 import logo from "../../assets/logo.png";
+
 export default function () {
   return (
     <div>

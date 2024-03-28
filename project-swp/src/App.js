@@ -18,6 +18,7 @@ import Dichvu from "./Pages/cungcapdichvu.js/dichvu";
 import Thanhtoan from "./Pages/tiendothanhtoan/thanhtoan";
 import useScrollToTop from "./Components/useScrollToTop/useScrollToTop";
 import Gioithieu from "./Pages/GioithieuPage/gioithieu";
+import ContactFloats from "./Components/ContactFloats/ContactFloats";
 
 export const Data = createContext(null);
 function App() {
@@ -30,6 +31,7 @@ function App() {
     <div className="App">
       <Data.Provider value={{ user, setUser }}>
         <Header />
+        <ContactFloats />
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/forgotpassword" element={<FotgtPassword />} />
