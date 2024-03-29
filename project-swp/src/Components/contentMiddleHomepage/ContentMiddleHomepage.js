@@ -123,7 +123,7 @@ export default function ContentMiddleHomepage() {
         </div>
       </div>
 
-      <br />
+      <div className="line" style={{ marginBottom: "5em" }}></div>
 
       <div className="container-lower">
         <div className="container-grid-lower">
@@ -224,6 +224,7 @@ export default function ContentMiddleHomepage() {
             </Button>
           )}
         </div>
+        <div className="line" style={{ marginBottom: "8em" }}></div>
       </div>
     </div>
   );

@@ -12,19 +12,24 @@ import { SignOut } from "../signout/SignOut";
 function Header() {
   const { getCurrUser } = useUsers();
   return (
-    <header className="header">
+    <header className="header" role="banner">
       <Logo />
       <Naviagation />
       {!getCurrUser() ? (
-        <>
+        <div className="inout" aria-label="Authentication Options">
           <SignIn />
           <SignUp />
-        </>
+        </div>
       ) : (
-        <span className="welcome">
-          <div>[{getCurrUser().username}]</div>
-          <SignOut />
-        </span>
+        <nav className="user-interactions" aria-label="User account">
+          <span
+            className="welcome"
+            aria-label={`Logged in as ${getCurrUser().username}`}
+          >
+            <div>[{getCurrUser().username}]</div>
+            <SignOut />
+          </span>
+        </nav>
       )}
     </header>
   );

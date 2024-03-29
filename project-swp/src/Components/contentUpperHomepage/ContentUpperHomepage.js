@@ -26,27 +26,27 @@ export default function ContentUpperHomepage() {
         <ul>
           <li>
             <Link className="section-content-link" to="/baogia">
-              • Báo giá
+              Báo giá
             </Link>
           </li>
           <li>
             <Link className="section-content-link" to="/dichvu">
-              • Cung cấp dịch vụ
+              Cung cấp dịch vụ
             </Link>
           </li>
           <li>
             <Link className="section-content-link" to="/thanhtoan">
-              • Tiến độ thanh toán
+              Tiến độ thanh toán
             </Link>
           </li>
           <li>
             <Link className="section-content-link" to="/baohanh">
-              • Chính sách bảo hành
+              Chính sách bảo hành
             </Link>
           </li>
           <li>
             <Link className="section-content-link" to="/contact">
-              • Thông tin liên hệ
+              Thông tin liên hệ
             </Link>
           </li>
         </ul>
