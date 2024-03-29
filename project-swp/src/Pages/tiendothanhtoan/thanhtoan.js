@@ -3,9 +3,9 @@ import "./thanhtoan.css";
 import { Link } from "react-router-dom";
 export default function () {
   return (
-    <div className="AboutUs">
-      <h1 className="section-title">Chính sách thanh toán</h1>
-      <div className="AboutUs-Content">
+    <div className="thanhtoan">
+      <h1 className="section-thanhtoan-title">Chính sách thanh toán</h1>
+      <div className="thanhtoan-Content">
         <p className="head">
           Tiến độ thanh toán khi quý khách kí hợp đồng xây dựng tại công ty
           BuildQuote Experts

@@ -6,16 +6,16 @@ import logo from "../../assets/logo.png";
 
 export default function () {
   return (
-    <div>
-      <div className="AboutUs">
-        <h2 className="section-title">
+    <div className="container">
+      <div className="Contact">
+        <h2 className="section-contact-title">
           CÔNG TY TNHH TM THIẾT KẾ ĐẦU TƯ XÂY DỰNG
         </h2>
         <Link to="/">
           <img src={logo} alt="logo công ty" />
         </Link>
 
-        <p className="section-title">LIÊN HỆ TƯ VẤN</p>
+        <p className="section-contact-title">LIÊN HỆ TƯ VẤN</p>
         <div className="Contact-Content">
           <p>
             Công ty TNHH Thương mại Thiết kế Đầu tư Xây dựng

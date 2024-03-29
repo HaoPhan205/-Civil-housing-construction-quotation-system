@@ -10,12 +10,11 @@ export default function Homepage() {
   return (
     <div className="homepage">
       <Carousel />
-      <br />
-      <br />
+
       <ContentMiddleHomepage />
-      <br />
+
       <BaoGiaDuKien />
-      <br />
+
       <ContentLowerHomepage />
     </div>
   );

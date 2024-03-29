@@ -17,7 +17,7 @@ export default function ContentLowerHomepage() {
           style={{ flexDirection: "column" }}
         >
           <div className="section-header">
-            <h2 className="section-title" style={{ color: "yellow" }}>
+            <h2 className="section-lower-title" style={{ color: "yellow" }}>
               THÔNG TIN NHÀ THẦU
             </h2>
           </div>

@@ -5,14 +5,14 @@
     align-items: center;
     justify-content: space-evenly;
     background-color: #E4E4E7;
-   
-    font-family: 'Montserrat';
     width:100%;
 }
 
 .section {
     line-height: 3em;
+    font-size: 15px;
 }
+
 .section1-upper ul {
     display: flex;
     justify-content: space-between;

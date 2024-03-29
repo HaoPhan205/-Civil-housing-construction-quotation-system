@@ -43,8 +43,9 @@ function SignInPage() {
           <form onSubmit={handleSubmit}>
             <div className="inputs">
               <div className="input">
-                <img src={user_icon} alt="user" />
+                <img className="icon" src={user_icon} alt="user" />
                 <input
+                  style={{ color: "white" }}
                   type="text"
                   placeholder="Username"
                   value={username}
@@ -52,8 +53,9 @@ function SignInPage() {
                 />
               </div>
               <div className="input">
-                <img src={password_icon} alt="password" />
+                <img className="icon" src={password_icon} alt="password" />
                 <input
+                  style={{ color: "white" }}
                   type="password"
                   placeholder="Password"
                   value={password}

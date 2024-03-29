@@ -4,10 +4,9 @@
     justify-content: center;
   }
   
-  .section-title {
+  .section-upper-title {
     font-size: 3em; 
-    color: #1B1A55; 
-    font-family: "Roboto Condensed";
+    color: #1B1A55;
     font-weight: bold;
     margin: 0 20px; 
   }
@@ -36,7 +35,11 @@
     padding: 10px 20px;
     background-color: #f0f0f0;
     border-radius: 5px;
-    width: 250px;
+    width: 220px;
+  }
+
+  .section-content-link:nth-child(1), .item:nth-child(2) {
+    flex-basis: 45%; 
   }
 
   .section-content-link:hover {
@@ -62,4 +65,23 @@
     list-style-type: none;
     margin: 0;
     padding: 0;
+  }
+
+  .content-link {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 5px;
+    margin: 0; 
+    gap: 0px;
+    justify-content: center;
+  }
+
+  .content-link li {
+    box-sizing: border-box;
+    padding: 0; 
+    text-align: center; 
+    align-items: center;
+    justify-content: center;
+    
   }

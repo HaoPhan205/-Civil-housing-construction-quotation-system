@@ -1,22 +1,32 @@
-.AboutUs{
+.thanhtoan {
     text-align: center;
     margin-top: 30px;
     }
-    .AboutUs h1{
+    .thanhtoan h1{
         text-transform: uppercase;
         font-family: Unica One,sans-serif;
         font-size: 200%;
     }
-    .AboutUs-Content{
-        text-align: justify;
-        margin: 80px 50px;
-        font-size: 100%;
+    .thanhtoan-Content{
+        color: black;
+        background-color: #f8f8f8;
+         border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        max-width: 1200px;
+        margin: 20px auto;
+        font-size: 20px;
     }
     
 .head {
     font-weight: bold;
 }
 .content .title {
-    font-family: "Roboto Condensed";
+    font-weight: bold;
+}
+
+.section-thanhtoan-title {
+    font-size: 3em; 
+    color: #1B1A55;
     font-weight: bold;
 }

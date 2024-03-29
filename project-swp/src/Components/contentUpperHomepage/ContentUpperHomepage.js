@@ -7,7 +7,7 @@ export default function ContentUpperHomepage() {
     <div className="container" id="about">
       <br />
       <div className="section-header">
-        <h2 className="section-title">VỀ CHÚNG TÔI</h2>
+        <h2 className="section-upper-title">VỀ CHÚNG TÔI</h2>
         <div className="line"></div>
       </div>
       <div className="section-content">
@@ -23,7 +23,7 @@ export default function ContentUpperHomepage() {
         </p>
 
         <p> Liên hệ với chúng tôi để nhận ngay báo giá tốt nhất:</p>
-        <ul>
+        <ul className="content-link">
           <li>
             <Link className="section-content-link" to="/baogia">
               Báo giá
@@ -46,7 +46,7 @@ export default function ContentUpperHomepage() {
           </li>
           <li>
             <Link className="section-content-link" to="/contact">
-              Thông tin liên hệ
+              Liên hệ tư vấn
             </Link>
           </li>
         </ul>

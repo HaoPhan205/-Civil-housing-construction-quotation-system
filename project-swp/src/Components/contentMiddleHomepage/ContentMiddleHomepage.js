@@ -67,7 +67,9 @@ export default function ContentMiddleHomepage() {
       <div className="container-upper">
         <div className="container-grid-upper">
           <div className="section-header" style={{ marginBottom: "2em" }}>
-            <h2 className="section-title">NHỮNG CÔNG TRÌNH ĐÃ THI CÔNG</h2>
+            <h2 className="section-middle-title">
+              NHỮNG CÔNG TRÌNH ĐÃ THI CÔNG
+            </h2>
           </div>
 
           <Grid container spacing={2}>
@@ -123,12 +125,12 @@ export default function ContentMiddleHomepage() {
         </div>
       </div>
 
-      <div className="line" style={{ marginBottom: "5em" }}></div>
+      <div className="line" style={{ marginBottom: "2em" }}></div>
 
       <div className="container-lower">
         <div className="container-grid-lower">
           <div className="section-header" style={{ marginBottom: "2em" }}>
-            <h2 className="section-title">MẪU THIẾT KẾ NHÀ HIỆN ĐẠI</h2>
+            <h2 className="section-middle-title">MẪU THIẾT KẾ NHÀ HIỆN ĐẠI</h2>
           </div>
           <div className="section-button">
             <Button
@@ -161,7 +163,7 @@ export default function ContentMiddleHomepage() {
               variant="contained"
               onClick={() => handleFilterChange("sanvuon")}
             >
-              Mẫu nhà có sân vườn
+              Mẫu nhà sân vườn
             </Button>
           </div>
 

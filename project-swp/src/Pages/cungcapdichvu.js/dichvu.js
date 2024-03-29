@@ -3,16 +3,17 @@ import "./dichvu.css";
 import { Link } from "react-router-dom";
 export default function () {
   return (
-    <div className="AboutUs">
-      <h1 className="section-title">Cung cấp dịch vụ</h1>
-      <div className="AboutUs-Content">
+    <div className="dichvu">
+      <h1 className="section-dichvu-title">Cung cấp dịch vụ</h1>
+      <div className="dichvu-Content">
         <p className="head">Chính sách dịch vụ của chúng tôi!</p>
         <p>
-          Xây dựng BuildQuote Experts cung cấp đến quý khách dịch vụ tư vấn
-          thiết kế và thi công xây dựng các công trình Dân dụng và Công nghiệp,
-          mang đến cho khách hàng một sản phẩm chất lượng, tốt nhất, phù hợp với
-          ngân sách của mỗi khách hàng khác nhau. Chính sách này của Gia Long đã
-          được thiết lập ngày từ khi công ty thành lập và bắt đầu hoạt động:
+          Công ty TNHH Thương mại Thiết kế Đầu tư Xây dựng BuildQuote Experts
+          cung cấp đến quý khách dịch vụ tư vấn thiết kế và thi công xây dựng
+          các công trình Dân dụng và Công nghiệp, mang đến cho khách hàng một
+          sản phẩm chất lượng, tốt nhất, phù hợp với ngân sách của mỗi khách
+          hàng khác nhau. Chính sách này của Gia Long đã được thiết lập ngày từ
+          khi công ty thành lập và bắt đầu hoạt động:
         </p>
         <p>
           – Công ty có trách nhiệm khai báo với chính quyền địa phương về lao

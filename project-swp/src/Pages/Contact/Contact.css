@@ -1,22 +1,22 @@
-.AboutUs{
+.Contact{
     text-align: center;
-    margin-top: 30px;
+    margin-top: 40px;
     background-color: #f5f5f5; 
-  padding: 20px;
-  border-radius: 8px; 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-  max-width: 800px;
-  margin: auto;
+    padding: 20px;
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    max-width: 800px;
+    margin: auto;
     }
-    .AboutUs h2{
+    .Contact h2{
         text-transform: uppercase;
         font-size: 300%;
     }
-    .AboutUs img{
+    .Contact img{
         max-width: 200px;
         
     }
-    .AboutUs-Content{
+    .Contact-Content{
         font-size: 100%;
         text-align: center;
     }   
@@ -30,23 +30,28 @@
     text-align: center;  
 } 
 
-.section-title {
-    color: #333; /* Dark grey for strong visibility */
-    margin-bottom: 15px;
+.section-contact-title {
+  font-size: 3em; 
+  color: #1B1A55;
+  font-weight: bold;
+  margin: 0 20px; 
+  text-align: center;
   }
   
   .Contact-Content p {
-    color: #666; /* Lighter text for the detailed contact info */
-    line-height: 1.6; /* Improve readability */
+    color: #000000; 
+    line-height: 1.6; 
+    text-align: center;
   }
   
   .Contact-Content a {
-    color: #3498db; /* Brand color for links */
-    text-decoration: none; /* Remove underline */
+    color: #3498db; 
+    text-decoration: none;
   }
   
   .Contact-Content a:hover {
-    text-decoration: underline; /* Add underline on hover for better UX */
+    text-decoration: underline;
   }
+ 
   
   

@@ -10,6 +10,14 @@
     justify-content: center;
     align-items: center;
 }
+
+.section-middle-title {
+    font-size: 3em; 
+    color: #1B1A55;
+    font-weight: bold;
+    margin: 0 20px; 
+  }
+
 .container .button-below {
    
     background-color: #1B1A55;
@@ -17,14 +25,12 @@
     color: white;
     font-size: medium;
     text-align: center;
-    font-family: "Roboto Condensed";
     font-weight: bold;
     width: 7em;
     text-transform: none;
 }
 
 .content .title {
-    font-family: "Roboto Condensed";
     font-weight: bold;
 
 }
@@ -54,8 +60,11 @@
     color: black;
     font-size: medium;
     text-align: center;
-    font-family: "Roboto Condensed";
     font-weight: bold;
     width: 12em;
     text-transform: none;
+}
+
+.container {
+    padding-top: 30px;
 }

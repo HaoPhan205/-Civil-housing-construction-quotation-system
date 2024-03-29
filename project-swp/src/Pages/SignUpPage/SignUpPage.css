@@ -4,7 +4,10 @@
   flex-direction: column;
   margin: auto;
   width: 600px;
-  background: none;
+  padding-bottom: 30px;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .header-signup {
@@ -79,14 +82,17 @@
   align-items: center;
   width: 220px;
   height: 59px;
-  color: #fff;
+  color: white;
   background: #4c00b4;
   border-radius: 50px;
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 700;
   cursor: pointer;
-  outline: none;
-  border: none;
+  background-color: #007bff;
+}
+
+.submit:hover {
+  background-color: blue;
 }
 
 .signInChoice {

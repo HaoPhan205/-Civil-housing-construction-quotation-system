@@ -20,7 +20,7 @@
 }
 
 .content-lower-inner-description{
-    text-align: justify; /* Sử dụng justify để căn đều hai lề */
+    text-align: justify;
   align-items: center;
   margin: 0 3em;
 
@@ -34,7 +34,6 @@
 .button-lower-inner-detail .button-lower-inner-detail-first{
     text-decoration: none;
     font-size: 18px;
-    font-family: 'Roboto Condensed';
     text-transform: none;
     margin: 0.5em;
     font-weight: bolder;  
@@ -45,7 +44,6 @@
 .button-lower-inner-detail .button-lower-inner-detail-second{
     text-decoration: none;
     font-size: 18px;
-    font-family: 'Roboto Condensed';
     text-transform: none;
     margin: 0.5em;
     font-weight: bolder;  
@@ -56,7 +54,12 @@
 }
     
 .line-content-inner{
-    border-bottom: 3px solid yellow; /* Màu và kiểu đường kẻ của dòng */
-    margin: 20px 0; /* Lề trên và dưới của dòng */
+    border-bottom: 3px solid yellow;
+    margin: 20px 0;
     width: 2em;
+  }
+
+  .section-lower-title {
+    font-weight: bold;
+    margin: 0 20px; 
   }

@@ -3,9 +3,9 @@ import "./baohanh.css";
 import { Link } from "react-router-dom";
 export default function () {
   return (
-    <div className="AboutUs">
-      <h1 className="section-title">Chính sách bảo hành</h1>
-      <div className="AboutUs-Content">
+    <div className="baohanh">
+      <h1 className="section-baohanh-title">Chính sách bảo hành</h1>
+      <div className="baohanh-Content">
         <p className="head">Chính sách bảo hành của chúng tôi!</p>
         <p>
           Thời gian bảo hành của chúng tôi là: từ 1 đến 5 năm tùy thuộc vào các
