@@ -86,7 +86,8 @@ export default function () {
         </p>
         <p className="head">Mọi chi tiết liên hệ: </p>
         <p>
-          Công ty TNHH TM TK ĐT <Link to="/baogia">BuildQuote Experts</Link>
+          Công ty TNHH Thương mại Thiết kế Đầu tư Xây dựng{" "}
+          <Link to="/baogia">BuildQuote Experts</Link>
         </p>
         <p>
           Địa chỉ: Lô E2a-7, Đường D1, Long Thạnh Mỹ, Thành Phố Thủ Đức, Thành
@@ -94,6 +95,15 @@ export default function () {
         </p>
         <p>Hotline: 0354019580</p>
         <p>Email: buildQuote.experts@gmail.com</p>
+        <p className="content-last">
+          <Link to="/Dichvu">Cung cấp dịch vụ</Link>
+        </p>
+        <p className="content-last">
+          <Link to="/Thanhtoan">Tiến độ thanh toán</Link>
+        </p>
+        <p className="content-last">
+          <Link to="/Baohanh">Chính sách bảo hành</Link>
+        </p>
       </div>
     </div>
   );
