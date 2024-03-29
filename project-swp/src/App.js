@@ -19,8 +19,20 @@ import Thanhtoan from "./Pages/tiendothanhtoan/thanhtoan";
 import useScrollToTop from "./Components/useScrollToTop/useScrollToTop";
 import Gioithieu from "./Pages/GioithieuPage/gioithieu";
 import ContactFloats from "./Components/ContactFloats/ContactFloats";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 export const Data = createContext(null);
+const theme = createTheme({
+  components: {
+    MuiRating: {
+      styleOverrides: {
+        iconFilled: {
+          color: "#ffeb3b",
+        },
+      },
+    },
+  },
+});
 function App() {
   const { getFromStorage } = useStorage();
   const [user, setUser] = useState(
@@ -29,24 +41,26 @@ function App() {
   useScrollToTop();
   return (
     <div className="App">
-      <Data.Provider value={{ user, setUser }}>
-        <Header />
-        <ContactFloats />
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/forgotpassword" element={<FotgtPassword />} />
-          <Route path="/signin" element={<SignInPage />} />
-          <Route path="/signup" element={<SignUpPage />} />
-          <Route path="/baogia" element={<BaoGia />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/baohanh" element={<Baohanh />} />
-          <Route path="/dichvu" element={<Dichvu />} />
-          <Route path="/thanhtoan" element={<Thanhtoan />} />
-          <Route path="/gioithieu" element={<Gioithieu />} />
-        </Routes>
-        <Footer />
-      </Data.Provider>
+      <ThemeProvider theme={theme}>
+        <Data.Provider value={{ user, setUser }}>
+          <Header />
+          <ContactFloats />
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/forgotpassword" element={<FotgtPassword />} />
+            <Route path="/signin" element={<SignInPage />} />
+            <Route path="/signup" element={<SignUpPage />} />
+            <Route path="/baogia" element={<BaoGia />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/baohanh" element={<Baohanh />} />
+            <Route path="/dichvu" element={<Dichvu />} />
+            <Route path="/thanhtoan" element={<Thanhtoan />} />
+            <Route path="/gioithieu" element={<Gioithieu />} />
+          </Routes>
+          <Footer />
+        </Data.Provider>
+      </ThemeProvider>
     </div>
   );
 }

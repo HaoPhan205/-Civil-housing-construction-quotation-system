@@ -5,6 +5,7 @@ import ContentUpperHomepage from "../../Components/contentUpperHomepage/ContentU
 import ContentMiddleHomepage from "../../Components/contentMiddleHomepage/ContentMiddleHomepage";
 import ContentLowerHomepage from "../../Components/contentLowerHomepage.js/ContentLowerHomepage";
 import BaoGiaDuKien from "../QuotationPage/BaoGiaDuKien";
+import Feedback from "../../Components/feedback/Feedback/Feedback";
 
 export default function Homepage() {
   return (
@@ -14,7 +15,7 @@ export default function Homepage() {
       <ContentMiddleHomepage />
 
       <BaoGiaDuKien />
-
+      <Feedback />
       <ContentLowerHomepage />
     </div>
   );

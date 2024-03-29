@@ -40,3 +40,7 @@
   font-family: 'Roboto', sans-serif;
   padding: auto;
 }
+
+.MuiRating-visuallyHidden {
+  display: none;
+}
