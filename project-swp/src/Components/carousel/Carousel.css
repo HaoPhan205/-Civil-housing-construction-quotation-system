@@ -1,44 +1,53 @@
 .carousel-container {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-  }
-  
-  .carousel_pic {
-    width: 100%;
-    height: 500px; 
-    object-fit: cover; 
-    display: block; 
-  }
-  
-  .carousel_controls {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
-    z-index: 2;
-  }
-  .carousel_indicators {
-    position: absolute;
-    bottom: 10px;
-    width: 100%;
-    text-align: center;
-    z-index: 2;
-  }
-  
-  .indicator {
-    display: inline-block;
-    margin: 0 5px;
-    cursor: pointer;
-    
-  }
-  
-  .indicator.active {
-  
-  }
-  .carousel_controls button {
-    background-color: rgba(255, 255, 255, 0.5);
-    
-  }  
+  max-width: 100%;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-content img {
+  width: 100%;
+  display: block;
+  height: 500px;
+  object-fit: cover;
+}
+
+.carousel-controls {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+
+.carousel-controls button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 24px;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.carousel-indicators .indicator {
+  border: none;
+  cursor: pointer;
+  margin: 0 2px;
+  width: 15px;
+  height: 15px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.carousel-indicators .indicator.active {
+  background-color: #717171;
+}

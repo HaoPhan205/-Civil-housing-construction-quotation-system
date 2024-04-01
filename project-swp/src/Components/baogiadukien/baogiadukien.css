@@ -1,0 +1,214 @@
+
+
+.baogia {
+  margin: 10px 0 0 0;
+  padding: 0 4.5vw 0 4.5vw;
+  box-sizing: border-box;
+}
+
+.rowBaoGia {
+  margin: 10px 0 0 0;
+}
+
+.title {
+  font-weight: 600;
+  padding: 0 0 5px 0;
+  font-size: 30px;
+  border-bottom: 1px solid gray;
+}
+
+.textTitle {
+  font-size: 25px;
+  font-weight: 500;
+}
+
+
+.baogiaCover {
+  border: 1px solid #1B1A55;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.titleBaoGia {
+  color: white;
+  background: #1B1A55;
+  text-align: center;
+  font-weight: 500;
+  font-size: 20px;
+  padding: 5px;
+}
+
+.bodyBaoGia {
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.userOption {
+  margin: 15px 0 0 0;
+}
+
+.optionTitle {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+input {
+  border: 1px solid rgb(214, 214, 214) !important;
+  height: 20px !important;
+  font-size: 14px !important;
+  padding: 5px !important;
+  border-radius: 5px !important;
+  width: 95% !important;
+}
+
+.submitBtn {
+  padding: 8px;
+  font-size: 15px;
+  width: 100%;
+  outline: none;
+  border: none;
+  background-color: #1B1A55;
+  color: white;
+  font-weight: 600;
+  margin: 25px 0 0 0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.12s linear;
+}
+
+.submitBtn:hover {
+  background-color: #2c2b7a;
+}
+
+.infoBaoGia {
+  font-size: 15px;
+  margin: 10px 0 0 0;
+}
+.baogiaList {
+  margin: 0;
+}
+.baogiaList li {
+  font-size: 15px;
+  margin: 5px 0 0 0;
+}
+
+.details {
+  margin: 0 0 20px 0;
+}
+
+.saveBaoGiaBtn {
+  padding: 8px;
+  font-size: 15px;
+  width: 300px;
+  outline: none;
+  border: none;
+  background-color: #1B1A55;
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 15px 0 0 0;
+  transition: all 0.12s linear;
+}
+
+.saveBaoGiaBtn:hover {
+  background-color: #2c2b7a;
+}
+
+.baogiaContainer {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  margin: 5px 0 0 0;
+}
+
+.baogiaItem {
+  width: calc(100%/3.5);
+  font-size: 15px;
+  border: 1.5px solid #1B1A55;
+  border-radius: 5px;
+  padding: 5px;
+  box-sizing: border-box;
+  margin: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.12s linear;
+}
+
+.baogiaItem:hover {
+  background-color: rgb(227, 227, 227);
+}
+
+.selected {
+  color: white;
+  background-color: #1B1A55;
+}
+
+.deleteIcon {
+  font-size: 14px;
+  margin: 0 0 0 7px;
+  cursor: pointer;
+  transition: all 0.12s linear;
+}
+
+.deleteIcon:hover {
+  color: red
+}
+
+.totalMoney {
+  margin: 8px 0 0 0;
+  padding: 8px 0 0 15px;
+  box-sizing: border-box;
+  border-top: 1px solid gray;
+  font-size: 18px;
+  font-weight: 600;
+  width: 350px;
+}
+
+.Baogia-Content {
+  color: #333;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  max-width: 1200px;
+  margin: 20px auto;
+  font-size: 20px;
+}
+
+.title {
+  text-align: center;
+  font-size: 24px;
+  color: #1B1A55;
+  margin-bottom: 20px;
+}
+
+.head {
+  font-weight: bold;
+  color: #1B1A55;
+  margin-top: 20px;
+}
+
+p {
+  line-height: 1.6;
+  text-align: justify;
+}
+
+a {
+  color: #1B1A55;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.content-last {
+  text-align: center;
+  margin-top: 30px;
+  font-weight: bold;
+  color: #1B1A55;
+}

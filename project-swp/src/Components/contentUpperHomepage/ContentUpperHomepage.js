@@ -7,21 +7,34 @@ export default function ContentUpperHomepage() {
     <div className="container" id="about">
       <br />
       <div className="section-header">
-        <h2 className="section-upper-title">VỀ CHÚNG TÔI</h2>
+        <h2 className="section-upper-title">BuildQuote Experts</h2>
         <div className="line"></div>
       </div>
       <div className="section-content">
         <p>
-          BuildQuote Experts được thành lập năm 2024 bởi một nhóm sinh viên Đại
-          học FPT.
+          Công ty TNHH Thương mại Thiết kế Đầu tư Xây dựng{" "}
+          <Link to="/baogia">BuildQuote Experts</Link> – điểm đến tin cậy của
+          mọi dự án xây dựng nhà ở dân dụng, từ nhà phố đến biệt thự. Được thành
+          lập vào năm 2014, chúng tôi tự hào mang đến giải pháp toàn diện cho
+          mọi nhu cầu thiết kế, đầu tư và xây dựng của bạn.
         </p>
         <p>
-          Chúng tôi cung cấp các thông tin các nhà thầu, báo giá sơ bộ để thi
-          công xây dựng dân dụng như nhà phố, biệt thự. Với tinh thần cầu tiến
-          và luôn hướng đến tiện lợi cho khách hàng, BuildQuote Experts luôn
-          hướng đến mong muốn hoàn chỉnh nhất về không gian cho khách hàng.
+          Với sứ mệnh là cầu nối đáng tin cậy giữa khách hàng và các nhà thầu uy
+          tín, BuildQuote Experts cam kết cung cấp thông tin minh bạch, báo giá
+          sơ bộ chính xác, giúp quá trình quyết định của bạn trở nên dễ dàng và
+          thuận tiện hơn bao giờ hết. Chúng tôi hiểu rằng, mỗi công trình xây
+          dựng không chỉ là một không gian sống mà còn là ước mơ và niềm tự hào
+          của mỗi gia đình. Do đó, BuildQuote Experts không ngừng nỗ lực, không
+          chỉ trong việc tìm kiếm những giải pháp tiết kiệm chi phí nhất mà còn
+          đảm bảo chất lượng và tính thẩm mỹ cao cho tổ ấm của bạn.
         </p>
-
+        <p>
+          Hãy để BuildQuote Experts đồng hành cùng bạn trong hành trình xây dựng
+          không gian sống lí tưởng, nơi mỗi góc nhỏ đều chứa đựng tình yêu và sự
+          ấm áp. Chúng tôi không chỉ là nhà thầu xây dựng, chúng tôi là đối tác
+          tin cậy, là bạn đồng hành cùng bạn mỗi bước đi trên con đường hiện
+          thực hóa ước mơ về một ngôi nhà hoàn hảo.
+        </p>
         <p> Liên hệ với chúng tôi để nhận ngay báo giá tốt nhất:</p>
         <ul className="content-link">
           <li>

@@ -1,64 +1,65 @@
 .header {
-    display: flex;
-    justify-content: space-around;
-    background-color: rgb(254, 254, 253);
-    align-items: center; 
-    height:5em;
-    font-weight: 600;
-    
-    text-align: center;
-    position: fixed;
-    top: 0;
-  left: 0;
-  width: 100%; 
-  min-height: 60px;
-  box-shadow: 2px 2px 5px rgb(202, 202, 202);
-  z-index: 1000;
-  padding: 0 20px;
-  box-sizing: border-box;
-  font-size: 17px;
-    
+  display: flex;
+  justify-content: space-around;
+  background-color: rgb(254, 254, 253);
+  align-items: center; 
+  height:5em;
+  font-weight: 600;
+  
+  text-align: center;
+  position: fixed;
+  top: 0;
+left: 0;
+width: 100%; 
+min-height: 60px;
+box-shadow: 2px 2px 5px rgb(202, 202, 202);
+z-index: 1000;
+padding: 0 20px;
+box-sizing: border-box;
+font-size: 17px;
+  
 }
 
 .welcome {
-    display: flex;
-    align-items: center;
-    justify-self: center;
+  display: flex;
+  align-items: center;
+  justify-self: center;
 }
 
 .signInButton, .signUpButton {
-    padding: 8px 16px;
-    margin-left: 10px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff; 
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
-  
-  .signInButton:hover, .signUpButton:hover {
-    background-color: #0056b3;
-  }
-  
-  .signOutButton {
-    padding: 8px 16px;
-    border: none;
-    background-color: #dc3545; 
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  
-  .signOutButton:hover {
-    background-color: #c82333; 
-  }
+  padding: 8px 16px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff; 
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
 
-  .inout {
-    display: flex   
-  }
+.signInButton:hover, .signUpButton:hover {
+  background-color: #0056b3;
+}
 
-  body {
-    padding-top: 70px; 
-  }
+.signOutButton {
+  padding: 8px 16px;
+  border: none;
+  background-color: #dc3545; 
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.signOutButton:hover {
+  background-color: #0056b3;
+  color: black;
+}
+
+.inout {
+  display: flex   
+}
+
+body {
+  padding-top: 70px; 
+}

@@ -1,8 +1,5 @@
-import { IconButton, Paper } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import "./Carousel.css";
+import "./Carousel.css"; // Đảm bảo bạn có file CSS này với các style cần thiết
 
 export default function Carousel({ interval = 3000, images }) {
   const [activeStep, setActiveStep] = useState(0);
@@ -48,46 +45,35 @@ export default function Carousel({ interval = 3000, images }) {
   };
 
   return (
-    <div class="carousel-container">
-      <div className="carousel_container">
-        <Paper
-          square
-          elevation={0}
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "100%",
-          }}
+    <div className="carousel-container">
+      <div className="carousel-content">
+        {items.length > 0 ? items[activeStep] : <p>Loading...</p>}
+      </div>
+      <div className="carousel-controls">
+        <button
+          onClick={handleBack}
+          disabled={items.length <= 1}
+          aria-label="Previous slide"
         >
-          {items.length > 0 ? items[activeStep] : <p>Loading...</p>}
-        </Paper>
-        <div className="carousel_controls">
-          <IconButton
-            onClick={handleBack}
-            disabled={items.length <= 1}
-            aria-label="Previous slide"
-          >
-            <ArrowBackIosNewIcon />
-          </IconButton>
-          <IconButton
-            onClick={handleNext}
-            disabled={items.length <= 1}
-            aria-label="Next slide"
-          >
-            <ArrowForwardIosIcon />
-          </IconButton>
-        </div>
-        <div className="carousel_indicators">
-          {items.map((_, index) => (
-            <button
-              key={index}
-              className={`indicator ${index === activeStep ? "active" : ""}`}
-              onClick={() => setActiveStep(index)}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
-        </div>
+          &#10094;
+        </button>
+        <button
+          onClick={handleNext}
+          disabled={items.length <= 1}
+          aria-label="Next slide"
+        >
+          &#10095;
+        </button>
+      </div>
+      <div className="carousel-indicators">
+        {items.map((_, index) => (
+          <button
+            key={index}
+            className={`indicator ${index === activeStep ? "active" : ""}`}
+            onClick={() => setActiveStep(index)}
+            aria-label={`Go to slide ${index + 1}`}
+          ></button>
+        ))}
       </div>
     </div>
   );

@@ -6,10 +6,10 @@ import { Button } from "antd";
 export const SignOut = () => {
   const { onLogOut } = useUsers();
   return (
-    <div className="signUp">
+    <div className="signOut">
       <Button
         onClick={onLogOut}
-        className="signInUp_button signUp"
+        className="signOut_button signOut"
         variant="contained"
       >
         <div style={{ color: "white" }}>Đăng xuất</div>

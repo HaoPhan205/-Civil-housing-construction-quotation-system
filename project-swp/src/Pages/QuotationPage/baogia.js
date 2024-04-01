@@ -2,21 +2,42 @@
 
 import React, { useEffect, useState } from "react";
 import "./baogia.css";
-import { Row, Col, Select, Spin, Popconfirm } from "antd";
+import {
+  Row,
+  Col,
+  Select,
+  Spin,
+  Modal,
+  Checkbox,
+  message,
+  Button,
+  Tag,
+} from "antd";
 import { CloseOutlined } from "@ant-design/icons";
 import { useBaoGia } from "../../Services/Hooks/useBaoGia";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useUsers } from "../../Services/Hooks/useUsers";
+import { BaoGiaModal } from "./BaoGiaModal";
 
 const BaoGia = () => {
+  const { getCurrUser } = useUsers();
   const defaultData = {
-    loainha: "nhapho",
+    hoten: "",
+    email: getCurrUser()?.email,
+    sdt: "",
+    tenduan: "",
+    diachi: "",
+    loainha: "",
     hinhthuc: "trongoi",
-    dai: "",
-    rong: "",
-    sotang: 1,
+    dientichkhudat: 0,
+    dientichxaydung: 0,
+    sotang: "",
     loaimong: "daicoc",
     loaimai: "btct",
+    ngaydukien: "",
+    ngansachdukien: 0,
+    phongcach: "",
+    yeucaudacbiet: "",
   };
   const {
     updateChangeOption,
@@ -25,9 +46,9 @@ const BaoGia = () => {
     getSavedBaoGia,
     getBaoGiaByCurrUser,
     removeBaoGia,
+    InteractBaoGia,
+    getStatus,
   } = useBaoGia();
-
-  const { getCurrUser } = useUsers();
 
   const [data, setData] = useState(defaultData);
 
@@ -40,10 +61,14 @@ const BaoGia = () => {
 
   const [savedBaoGia, setSavedBaoGia] = useState(false);
 
+  const [modalState, setModalState] = useState(false);
+
+  const [checkBoxStatus, setCheckBoxStatus] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (getCurrUser()?.role === 0) {
+    if (getCurrUser()?.role === 0 || getCurrUser()?.role === 2) {
       navigate("/");
     }
   }, [getCurrUser()]);
@@ -53,19 +78,36 @@ const BaoGia = () => {
   }, []);
 
   const handleSelectOptionChange = (changeType, newValue) => {
+    if (newValue === 0) return;
     setData(updateChangeOption(changeType, newValue, data));
   };
 
   const handleSubmit = () => {
-    setBaoGiaData(calculateInfo(data, baogiaOptionArr));
-    setData(defaultData);
-    setSavedBaoGia(false);
+    if (!getCurrUser()) {
+      message.error("Bạn cần đăng nhập để gửi yêu cầu báo giá");
+      return;
+    }
+
+    const newBaoGia = calculateInfo(data, baogiaOptionArr);
+    if (newBaoGia) {
+      setBaoGiaData(newBaoGia);
+      setSavedBaoGia(false);
+      handleSave(newBaoGia);
+    }
   };
 
-  const handleSave = async () => {
+  const handleSave = async (newBaoGia) => {
+    if (!checkBoxStatus) {
+      message.error(
+        "Vui lòng đồng ý với các điều khoản và điều kiện của dịch vụ"
+      );
+      return;
+    }
+
     setLoading(true);
-    await handleSaveBaoGia(baogiaData);
+    await handleSaveBaoGia(newBaoGia);
     getBaoGiaByCurrUser(setOldBaoGiaData);
+    setData(defaultData);
     setLoading(false);
     setSavedBaoGia(true);
   };
@@ -80,19 +122,56 @@ const BaoGia = () => {
     getBaoGiaByCurrUser(setOldBaoGiaData);
     setDeleteLoading(false);
     setBaoGiaData(null);
+    setCheckBoxStatus(false);
   };
 
+  // Options
   const baogiaOptionArr = [
+    {
+      title: "Họ tên",
+      handleFunction: (newValue) => handleSelectOptionChange("hoten", newValue),
+      value: data.hoten,
+      options: null,
+    },
+    {
+      title: "Email",
+      handleFunction: (newValue) => handleSelectOptionChange("email", newValue),
+      value: data.email,
+      options: null,
+    },
+    {
+      title: "Số điện thoại",
+      handleFunction: (newValue) => handleSelectOptionChange("sdt", newValue),
+      value: data.sdt,
+      options: null,
+    },
+    {
+      title: "Tên dự án",
+      handleFunction: (newValue) =>
+        handleSelectOptionChange("tenduan", newValue),
+      value: data.tenduan,
+      options: null,
+    },
+    {
+      title: "Địa chỉ",
+      handleFunction: (newValue) =>
+        handleSelectOptionChange("diachi", newValue),
+      value: data.diachi,
+      options: null,
+    },
     {
       title: "Chọn loại nhà",
       handleFunction: (newValue) =>
         handleSelectOptionChange("loainha", newValue),
       value: data.loainha,
-      options: [
-        { value: "nhapho", label: "Nhà phố" },
-        { value: "nhacapbon", label: "Nhà cấp 4" },
-        { value: "bietthu", label: "Biệt thự" },
-      ],
+      options: null,
+    },
+    {
+      title: "Phong cách",
+      handleFunction: (newValue) =>
+        handleSelectOptionChange("phongcach", newValue),
+      value: data.phongcach,
+      options: null,
     },
     {
       title: "Chọn hình thức xây nhà",
@@ -105,24 +184,26 @@ const BaoGia = () => {
       ],
     },
     {
-      title: "Chiều dài (m²)",
-      value: data.dai,
+      title: "Diện tích khu đất (m²)",
+      value: data.dientichkhudat,
       handleFunction: (newValue) =>
-        handleSelectOptionChange("dai", newValue.trim()),
+        handleSelectOptionChange("dientichkhudat", parseInt(newValue.trim())),
       options: null,
+      type: "number",
     },
     {
-      title: "Chiều rộng (m²)",
-      value: data.rong,
+      title: "Diện tích xây dựng (m²)",
+      value: data.dientichxaydung,
       handleFunction: (newValue) =>
-        handleSelectOptionChange("rong", newValue.trim()),
+        handleSelectOptionChange("dientichxaydung", parseInt(newValue.trim())),
       options: null,
+      type: "number",
     },
     {
       title: "Số tầng",
       value: data.sotang,
       handleFunction: (newValue) =>
-        handleSelectOptionChange("sotang", newValue.trim()),
+        handleSelectOptionChange("sotang", newValue),
       options: null,
     },
     {
@@ -147,88 +228,92 @@ const BaoGia = () => {
         { value: "ngoi", label: "Mái đúc lợp ngói" },
       ],
     },
+    {
+      title: "Ngày dự kiến",
+      handleFunction: (newValue) =>
+        handleSelectOptionChange("ngaydukien", newValue.trim()),
+      value: data.ngaydukien,
+      options: null,
+    },
+    {
+      title: "Ngân sách dự kiến",
+      handleFunction: (newValue) =>
+        handleSelectOptionChange("ngansachdukien", parseInt(newValue.trim())),
+      value: data.ngansachdukien,
+      options: null,
+      type: "number",
+    },
+    {
+      title: "Yêu cầu đặc biệt",
+      handleFunction: (newValue) =>
+        handleSelectOptionChange("yeucaudacbiet", newValue),
+      value: data.yeucaudacbiet,
+      options: null,
+    },
   ];
 
-  return (
-    <div>
-      <div className="baogia">
-        <div className="title">Thông tin dự án cần báo giá </div>
-        <Row className="rowBaoGia">
-          <Col span={24} sm={16}>
-            <Spin spinning={loading}>
-              {baogiaData && (
-                <div className="details">
-                  <div className="textTitle">Chi tiết báo giá</div>
-                  <div>
-                    <div className="infoBaoGia">
-                      Bạn đang cần xây nhà với kích thước {baogiaData.dai} x{" "}
-                      {baogiaData.rong} m:
-                    </div>
-                    <ol className="baogiaList">
-                      <li>Loại nhà: {baogiaData.loainha}</li>
-                      <li>Hình thức xây: {baogiaData.hinhthuc}</li>
-                      <li>Số tầng: {baogiaData.sotang}</li>
-                      <li>Diện tích các tầng: {baogiaData.dientichtang} m²</li>
-                      <li>Loại móng: {baogiaData.loaimong}</li>
-                      <li>Móng: {baogiaData.mong} m²</li>
-                      <li>Loại mái: {baogiaData.loaimai}</li>
-                      <li>Mái: {baogiaData.mai} m²</li>
-                      <li>Tổng diện tích: {baogiaData.tongdientich} m²</li>
-                      <li>
-                        Đơn giá:{" "}
-                        {baogiaData.dongia
-                          .toLocaleString()
-                          .replace(",", ".")
-                          .replace(/\./g, ",")}{" "}
-                        VND
-                      </li>
-                    </ol>
-                    <div className="totalMoney">
-                      Tổng tiền:{" "}
-                      {baogiaData.tongtien
-                        .toLocaleString()
-                        .replace(",", ".")
-                        .replace(/\./g, ",")}{" "}
-                      VND
-                    </div>
-                    {!baogiaData?.id && !savedBaoGia && (
-                      <button className="saveBaoGiaBtn" onClick={handleSave}>
-                        Lưu báo giá
-                      </button>
-                    )}
-                  </div>
-                </div>
-              )}
-            </Spin>
+  const [currViewBaoGia, setCurrViewBaoGia] = useState(null);
+  const handleViewDetails = (baogia) => {
+    setModalState(true);
+    setCurrViewBaoGia(baogia);
+  };
 
-            <Spin spinning={deleteLoading}>
-              <div className="textTitle">Các yêu cầu báo giá</div>
-              <div className="baogiaContainer">
-                {oldBaoGiaData?.map((data) => (
-                  <div
-                    key={data.id}
-                    className={`baogiaItem ${
-                      baogiaData?.id &&
-                      baogiaData?.id === data?.id &&
-                      "selected"
-                    }`}
-                    onClick={() => handleClickOldBaoGia(data)}
-                  >
-                    Báo giá nhà {data.dai} x {data.rong} m
-                    <Popconfirm
-                      title="Bạn có chắc chắn muốn xoá?"
-                      onConfirm={() => handleDeleteBaoGia(data.id)}
-                      cancelText="Huỷ"
-                    >
-                      <CloseOutlined className="deleteIcon" />
-                    </Popconfirm>
-                  </div>
-                ))}
+  const handleCloseDetails = () => {
+    setCurrViewBaoGia(null);
+  };
+
+  const [updateStatusLoading, setUpdateStatusLoading] = useState(false);
+  const handleInteractStatus = async (status) => {
+    setUpdateStatusLoading(true);
+
+    const signal = await InteractBaoGia(currViewBaoGia, status);
+    if (signal) {
+      message.success("Cập nhật trạng thái thành công");
+    } else {
+      message.error("Cập nhật trạng thái thất bại");
+    }
+
+    setUpdateStatusLoading(false);
+  };
+
+  return (
+    <div className="baogia">
+      <Modal
+        open={currViewBaoGia}
+        onCancel={handleCloseDetails}
+        title={`Dự án: ${currViewBaoGia?.tenduan}`}
+        footer={
+          currViewBaoGia && (
+            <>
+              <div className="btnCtn">
+                <Button
+                  style={{ marginRight: "10px" }}
+                  onClick={() => handleInteractStatus(2)}
+                  disabled={currViewBaoGia.status !== 3}
+                  danger
+                >
+                  Từ chối
+                </Button>
+                <Button
+                  type="primary"
+                  onClick={() => handleInteractStatus(1)}
+                  disabled={currViewBaoGia.status !== 3}
+                >
+                  Chấp nhận
+                </Button>
               </div>
-            </Spin>
-          </Col>
-          <Col span={0} sm={1}></Col>
-          <Col span={24} sm={7}>
+            </>
+          )
+        }
+      >
+        <Spin spinning={updateStatusLoading}>
+          <BaoGiaModal baogia={currViewBaoGia} />
+        </Spin>
+      </Modal>
+      <div className="title">Báo Giá</div>
+      <Row className="rowBaoGia">
+        <Col span={24} sm={16}>
+          <Spin spinning={loading}>
             <div className="baogiaCover">
               <div className="titleBaoGia">Dự toán chi phí</div>
               <div className="bodyBaoGia">
@@ -248,114 +333,58 @@ const BaoGia = () => {
                           option.handleFunction(newValue.target.value)
                         }
                         value={option.value}
-                        type="number"
+                        type={option.type === "number" ? "number" : "text"}
                       />
                     )}
                   </div>
                 ))}
+                <div className="checkboxContainer">
+                  <Checkbox
+                    defaultChecked={checkBoxStatus}
+                    onChange={() => setCheckBoxStatus(!checkBoxStatus)}
+                  >
+                    Tôi đã đọc và đồng ý với các điều khoản và điều kiện của
+                    dịch vụ
+                  </Checkbox>
+                </div>
                 <button className="submitBtn" onClick={handleSubmit}>
-                  Yêu cẩu báo giá
+                  Gửi yêu cầu báo giá
                 </button>
               </div>
             </div>
-          </Col>
-        </Row>
-        <div className="title">Hướng Dẫn Gửi Yêu Cầu Báo Giá</div>
-        <div className="Baogia-Content">
-          <p className="head">
-            Khi bạn quyết định gửi yêu cầu báo giá cho dự án nhà ở dân dụng của
-            mình, việc cung cấp thông tin chính xác và đầy đủ là rất quan trọng.
-            Điều này giúp chúng tôi hiểu rõ nhu cầu của bạn và đưa ra báo giá
-            chính xác nhất. Vui lòng tham khảo hướng dẫn dưới đây để quá trình
-            gửi yêu cầu diễn ra suôn sẻ.
-          </p>
-          <p className="head">Thông Tin Cần Thiết Khi Gửi Yêu Cầu</p>
-          <p>
-            1. Thông Tin Cá Nhân: Cung cấp thông tin liên lạc đầy đủ để chúng
-            tôi có thể liên hệ với bạn khi cần thiết.
-          </p>
-          <p>
-            2. Loại Dự Án: Rõ ràng về loại dự án bạn quan tâm (nhà phố, biệt
-            thự, nhà có sân vườn, etc...).
-          </p>
-          <p>
-            3. Diện Tích Khu Đất: Bao gồm thông tin về kích thước và hình dáng
-            của khu đất để chúng tôi có cái nhìn tổng quan về không gian làm
-            việc.
-          </p>
-          <p>
-            4. Yêu Cầu Cụ Thể: Mô tả chi tiết về ý tưởng, phong cách thiết kế,
-            số lượng phòng, và bất kỳ yêu cầu đặc biệt nào khác.
-          </p>
-          <p>
-            5. Thời Gian và Ngân Sách: Xác định kỳ vọng về thời gian hoàn thành
-            và ngân sách dự kiến để chúng tôi đề xuất giải pháp phù hợp.
-          </p>
-          <p className="head">Nguyên Tắc Khi Gửi Yêu Cầu</p>
-          <p>
-            1. Chính Xác và Đầy Đủ Hãy cung cấp thông tin chính xác và đầy đủ.
-            Mọi thiếu sót hoặc sai sót trong thông tin có thể ảnh hưởng đến tính
-            chính xác của báo giá.
-          </p>
-          <p>
-            2. Mô Tả Cụ Thể Dự Án Một mô tả chi tiết và rõ ràng giúp chúng tôi
-            hiểu rõ hơn về nhu cầu và mong muốn của bạn, từ đó đưa ra báo giá và
-            giải pháp tốt nhất.
-          </p>
-          <p>
-            3. Thời Gian và Ngân Sách Xác định rõ thời gian hoàn thành mong muốn
-            và nếu có thể, hãy chia sẻ khoảng ngân sách bạn dự kiến. Điều này
-            giúp chúng tôi đề xuất phương án phù hợp nhất.
-          </p>
-          <p>
-            4. Đọc và Hiểu Điều Khoản Chúng tôi khuyến khích bạn đọc kỹ các điều
-            khoản và điều kiện dịch vụ trước khi gửi yêu cầu. Việc này đảm bảo
-            bạn hiểu rõ quyền lợi và trách nhiệm của mình trong quá trình hợp
-            tác.
-          </p>
-          <p>
-            5. Kiểm Tra Thông Tin Vui lòng kiểm tra lại thông tin trước khi gửi
-            để đảm bảo không có sai sót. Điều này giúp chúng tôi xử lý yêu cầu
-            của bạn một cách nhanh chóng và chính xác.
-          </p>
-          <p>
-            6. Quyền Riêng Tư Thông tin cá nhân và dự án của bạn sẽ được bảo mật
-            tuyệt đối. Chúng tôi cam kết không chia sẻ thông tin của bạn với bất
-            kỳ bên thứ ba nào mà không có sự đồng ý.
-          </p>
-          <p>
-            7. Kiên Nhẫn Chờ Đợi Chúng tôi sẽ nỗ lực phản hồi yêu cầu của bạn
-            càng sớm càng tốt. Tuy nhiên, vui lòng kiên nhẫn chờ đợi trong khi
-            chúng tôi xử lý thông tin.
-          </p>
-          <p>
-            Chúng tôi rất trân trọng cơ hội được hợp tác và mong muốn mang đến
-            cho bạn dịch vụ tốt nhất. Hãy chắc chắn rằng mỗi yêu cầu báo giá
-            được gửi đến chúng tôi là bước đầu tiên hướng tới việc thực hiện dự
-            án của bạn một cách thành công
-          </p>
-          <p className="head">Mọi chi tiết liên hệ: </p>
-          <p>
-            Công ty TNHH Thương mại Thiết kế Đầu tư Xây dựng{" "}
-            <Link to="/baogia">BuildQuote Experts</Link>
-          </p>
-          <p>
-            Địa chỉ: Lô E2a-7, Đường D1, Long Thạnh Mỹ, Thành Phố Thủ Đức, Thành
-            phố Hồ Chí Minh
-          </p>
-          <p>Hotline: 0354019580</p>
-          <p>Email: buildQuote.experts@gmail.com</p>
-          <p className="content-last">
-            <Link to="/Dichvu">Cung cấp dịch vụ</Link>
-          </p>
-          <p className="content-last">
-            <Link to="/Thanhtoan">Tiến độ thanh toán</Link>
-          </p>
-          <p className="content-last">
-            <Link to="/Baohanh">Chính sách bảo hành</Link>
-          </p>
-        </div>
-      </div>
+          </Spin>
+        </Col>
+        <Col span={0} sm={1}></Col>
+        <Col span={24} sm={7} className="oldBaoGia_container">
+          <div className="yourOldBaoGia">CÁC BÁO GIÁ CỦA BẠN</div>
+          <Spin spinning={loading}>
+            {oldBaoGiaData.map((baogiaData, i) => (
+              <div
+                className="oldBaoGia"
+                key={i}
+                onClick={() => handleViewDetails(baogiaData)}
+              >
+                <div className="oldBaoGia_header">
+                  <div className="oldBaoGia_title">
+                    Dự án: {baogiaData.tenduan}
+                  </div>
+                  <div className="oldBaoGia_size">
+                    {Number(baogiaData.dientichkhudat).toLocaleString()} m²
+                  </div>
+                </div>
+                <div className="oldBaoGia_Footer">
+                  <div className="oldBaoGia_comments">
+                    {baogiaData.comments ? baogiaData.comments.length : 0} phản
+                    hồi
+                  </div>
+
+                  {getStatus(baogiaData.status)}
+                </div>
+              </div>
+            ))}
+          </Spin>
+        </Col>
+      </Row>
     </div>
   );
 };

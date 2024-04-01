@@ -1,67 +1,50 @@
-/** @format */
-
 import React, { createContext, useState } from "react";
 import "./App.css";
 import Homepage from "./Pages/Homepage/Homepage";
-import FotgtPassword from "./Pages/ForgotPassword/ForgotPassword";
 import { Routes, Route } from "react-router-dom";
 import SignUpPage from "./Pages/SignUpPage/SignUpPage";
 import SignInPage from "./Pages/SignInPage/SignInPage";
 import Contact from "./Pages/Contact/Contact";
 import { useStorage } from "./Services/Hooks/useStorage";
-import BaoGia from "./Pages/QuotationPage/baogia";
+import BaoGia from "./Pages/QuotationPage/BaoGia";
 import Header from "./Components/Header/Header";
 import { Admin } from "./Pages/Admin/Admin";
-import Baohanh from "./Pages/chinhsachbaohanh/baohanh";
-import Footer from "./Components/Footer/Footer";
 import Dichvu from "./Pages/cungcapdichvu.js/dichvu";
 import Thanhtoan from "./Pages/tiendothanhtoan/thanhtoan";
-import useScrollToTop from "./Components/useScrollToTop/useScrollToTop";
-import Gioithieu from "./Pages/GioithieuPage/gioithieu";
+import Baohanh from "./Pages/chinhsachbaohanh/baohanh";
 import ContactFloats from "./Components/ContactFloats/ContactFloats";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import Footer from "./Components/Footer/Footer";
+import ScrollToTop from "./Components/useHistory/useHistory";
+import Gioithieu from "./Pages/GioithieuPage/gioithieu";
 
 export const Data = createContext(null);
-const theme = createTheme({
-  components: {
-    MuiRating: {
-      styleOverrides: {
-        iconFilled: {
-          color: "#ffeb3b",
-        },
-      },
-    },
-  },
-});
 function App() {
   const { getFromStorage } = useStorage();
   const [user, setUser] = useState(
     getFromStorage("user") ? getFromStorage("user") : null
   );
-  useScrollToTop();
+  console.log(user);
   return (
-    <div className="App">
-      <ThemeProvider theme={theme}>
-        <Data.Provider value={{ user, setUser }}>
-          <Header />
-          <ContactFloats />
-          <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/forgotpassword" element={<FotgtPassword />} />
-            <Route path="/signin" element={<SignInPage />} />
-            <Route path="/signup" element={<SignUpPage />} />
-            <Route path="/baogia" element={<BaoGia />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="/baohanh" element={<Baohanh />} />
-            <Route path="/dichvu" element={<Dichvu />} />
-            <Route path="/thanhtoan" element={<Thanhtoan />} />
-            <Route path="/gioithieu" element={<Gioithieu />} />
-          </Routes>
-          <Footer />
-        </Data.Provider>
-      </ThemeProvider>
-    </div>
+    <Data.Provider value={{ user, setUser }}>
+      <div className="App">
+        <Header />
+        <ContactFloats />
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/signin" element={<SignInPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/baogia" element={<BaoGia />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/baohanh" element={<Baohanh />} />
+          <Route path="/dichvu" element={<Dichvu />} />
+          <Route path="/thanhtoan" element={<Thanhtoan />} />
+          <Route path="/gioithieu" element={<Gioithieu />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Data.Provider>
   );
 }
 export default App;

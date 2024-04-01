@@ -1,4 +1,4 @@
-.signUp  .signInUp_button{
+.signOut  .signOut_button{
     text-decoration: none;
     font-size: 1em;
     text-transform: none;
@@ -8,7 +8,7 @@
     
 
 
-.signUp .signUp{
+.signOut .signOut{
     background-color: #1B1A55;
     border-radius: 40px;
     text-decoration: none;

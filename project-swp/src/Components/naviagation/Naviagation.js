@@ -1,5 +1,3 @@
-/** @format */
-
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Naviagation.css";
@@ -16,12 +14,12 @@ function Naviagation() {
           </Link>
         </li>
         <li>
-          <Link className="naviagator__detail" to="/gioithieu">
+          <a className="naviagator__detail" href="/gioithieu">
             Giới thiệu
-          </Link>
+          </a>
         </li>
         <li>
-          {getCurrUser()?.role === 0 ? (
+          {getCurrUser()?.role === 0 || getCurrUser()?.role === 2 ? (
             <Link className="naviagator__detail" to="/admin">
               Quản lý
             </Link>

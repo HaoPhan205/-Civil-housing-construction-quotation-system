@@ -20,7 +20,7 @@
 }
 
 .content-lower-inner-description{
-    text-align: justify;
+    text-align: justify; 
   align-items: center;
   margin: 0 3em;
 
@@ -31,7 +31,7 @@
     align-items: center;
 }
 
-.button-lower-inner-detail .button-lower-inner-detail-first{
+.button-lower-inner-detail .button-lower-first{
     text-decoration: none;
     font-size: 18px;
     text-transform: none;
@@ -41,7 +41,7 @@
     color:white;
 }
     
-.button-lower-inner-detail .button-lower-inner-detail-second{
+.button-lower-inner-detail .button-lower-second{
     text-decoration: none;
     font-size: 18px;
     text-transform: none;
@@ -57,9 +57,4 @@
     border-bottom: 3px solid yellow;
     margin: 20px 0;
     width: 2em;
-  }
-
-  .section-lower-title {
-    font-weight: bold;
-    margin: 0 20px; 
   }

@@ -21,7 +21,7 @@ function Header() {
           <SignUp />
         </div>
       ) : (
-        <nav className="user-interactions" aria-label="User account">
+        <nav className="user" aria-label="User account">
           <span
             className="welcome"
             aria-label={`Logged in as ${getCurrUser().username}`}

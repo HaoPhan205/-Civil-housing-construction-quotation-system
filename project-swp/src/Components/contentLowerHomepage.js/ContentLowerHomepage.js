@@ -17,7 +17,7 @@ export default function ContentLowerHomepage() {
           style={{ flexDirection: "column" }}
         >
           <div className="section-header">
-            <h2 className="section-lower-title" style={{ color: "yellow" }}>
+            <h2 className="section-title" style={{ color: "yellow" }}>
               THÔNG TIN NHÀ THẦU
             </h2>
           </div>
@@ -41,10 +41,10 @@ export default function ContentLowerHomepage() {
               className="line line-content-inner"
               style={{ color: "yellow" }}
             ></div>
-            <Button
-              className="button-lower-inner-detail-second"
-              variant="contained"
-            >
+            <Button className="button-lower-first" variant="text">
+              <Link to="/gioithieu">Xem thêm</Link>
+            </Button>
+            <Button className="button-lower-second" variant="contained">
               <Link to="/contact">Liên hệ</Link>
             </Button>
           </div>

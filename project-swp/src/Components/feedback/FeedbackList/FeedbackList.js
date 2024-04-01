@@ -7,6 +7,7 @@ import {
   Typography,
   Rating,
 } from "@mui/material";
+import "./FeedbackList.css";
 
 const FeedbackList = () => {
   const [feedbacks, setFeedbacks] = useState([]);

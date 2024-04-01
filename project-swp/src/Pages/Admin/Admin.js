@@ -2,33 +2,40 @@
 
 import { useEffect, useState } from "react";
 import "./Admin.css";
-import { Button, Table, Tag } from "antd";
-import { LeftOutlined } from "@ant-design/icons";
+import { Button, Table, Tag, Spin, Modal, message } from "antd";
 import { useUsers } from "../../Services/Hooks/useUsers";
 import { useBaoGia } from "../../Services/Hooks/useBaoGia";
 import { useNavigate } from "react-router-dom";
+import { BaoGiaModal } from "../QuotationPage/BaoGiaModal";
 
 export const Admin = () => {
   const { getAllUsers, getCurrUser } = useUsers();
-  const { getBaoGiaByUsername } = useBaoGia();
-
-  const [currUserBaoGia, setCurrUserBaoGia] = useState(null);
-  const [usernameOfbBaoGia, setUsernameOfbBaoGia] = useState("");
+  const { InteractBaoGia, getAllBaoGia, getStatus } = useBaoGia();
 
   const [data, setData] = useState(null);
 
+  const [currViewBaoGia, setCurrViewBaoGia] = useState(null);
+
+  const [updateStatusLoading, setUpdateStatusLoading] = useState(false);
+
   const [loading, setLoading] = useState(false);
 
-  const navigate = useNavigate()
+  const [allBaoGia, setAllBaoGia] = useState(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if(!getCurrUser() || getCurrUser().role > 0) {
-        navigate("/")
+    if (!getCurrUser() || getCurrUser().role === 1) {
+      navigate("/");
     }
-  }, [getCurrUser()])
+  }, [getCurrUser()]);
 
   useEffect(() => {
-    getAllUsers(setData, setLoading);
+    if (getCurrUser().role === 0) {
+      getAllUsers(setData, setLoading);
+    } else {
+      getAllBaoGia(setAllBaoGia, setLoading);
+    }
   }, []);
 
   const checkRole = (role) => {
@@ -38,19 +45,6 @@ export const Admin = () => {
       default:
         return <Tag>User</Tag>;
     }
-  };
-
-  const handleViewBaoGia = async (user) => {
-    setUsernameOfbBaoGia(user.username);
-    setLoading(true);
-    const baoGiaOfUser = await getBaoGiaByUsername(user.username);
-    setLoading(false);
-    setCurrUserBaoGia(baoGiaOfUser);
-  };
-
-  const handleBack = () => {
-    setUsernameOfbBaoGia("");
-    setCurrUserBaoGia(null);
   };
 
   const columns = [
@@ -70,102 +64,157 @@ export const Admin = () => {
       key: "role",
       render: (role) => checkRole(role),
     },
-    {
-      title: "",
-      key: "action",
-      width: "10%",
-      render: (user) => {
-        return (
-          <Button
-            type="primary"
-            onClick={() => handleViewBaoGia(user)}
-          >
-            Xem báo giá
-          </Button>
-        );
-      },
-    },
+    // {
+    //   title: "",
+    //   key: "action",
+    //   width: "10%",
+    //   render: (user) => {
+    //     return (
+    //       <Button
+    //         type="primary"
+    //         onClick={() => handleViewBaoGia(user)}
+    //       >
+    //         Xem báo giá
+    //       </Button>
+    //     );
+    //   },
+    // },
   ];
 
-  const columns2 = [
-    {
-      title: "Thông tin",
-      key: "thongtin",
-      render: (data) => (
-        <>{data.loainha} | {data.hinhthuc} | {data.dai} x {data.rong} m</>
-      ),
-    },
-    {
-      title: "Diện tích tầng",
-      key: "dientichtang",
-      render: (data) => (
-        <>{data.dientichtang}m² x {data.sotang}</>
-      )
-    },
-    {
-      title: "Móng",
-      key: "mong",
-      render: (data) => (
-        <>{data.loaimong} - {data.mong}m²</>
-      )
-    },
-    {
-      title: "Mái",
-      key: "mai",
-      render: (data) => (
-        <>{data.loaimai} - {data.mai}m²</>
-      )
-    },
-    {
-      title: "Tổng diện tích",
-      key: "tongdientich",
-      dataIndex: "tongdientich",
-    },
-    // {
-    //   title: "Đơn giá",
-    //   dataIndex: "dongia",
-    //   key: "dongia",
-    //   render: (dongia) =>
-    //     dongia.toLocaleString().replace(",", ".").replace(/\./g, ","),
-    // },
-    {
-      title: "Tổng tiền",
-      dataIndex: "tongtien",
-      key: "tongtien",
-      render: (tongtien) =>
-        tongtien.toLocaleString().replace(",", ".").replace(/\./g, ","),
-    },
-  ];
+  const handleViewDetails = (baogia) => {
+    setCurrViewBaoGia(baogia);
+  };
+
+  const handleCloseDetails = () => {
+    setCurrViewBaoGia(null);
+  };
+
+  const handleInteractStatus = async (status) => {
+    setUpdateStatusLoading(true);
+    
+    if (status === 4 && reasonHuy.trim().length === 0) {
+      message.error("Vui lòng nhập lý do huỷ");
+      return;
+    }
+    const reason = status === 4 ? reasonHuy : "";
+
+    const signal = await InteractBaoGia(currViewBaoGia, status, reason);
+    if (signal) {
+      message.success("Cập nhật trạng thái thành công");
+    } else {
+      message.error("Cập nhật trạng thái thất bại");
+    }
+
+    setReasonHuy("");
+    setEnterReasonHuy(false);
+    setUpdateStatusLoading(false);
+  };
+
+  const [enterReasonHuy, setEnterReasonHuy] = useState(false);
+  const [reasonHuy, setReasonHuy] = useState("");
 
   return (
     <div className="admin">
       <div className="title">Quản lý</div>
-      {currUserBaoGia ? (
-        <>
-          <Button
-            onClick={handleBack}
-            icon={<LeftOutlined />}
-            style={{ margin: "10px 0 0 0" }}
-            type="text"
-          >
-            Quay lại
-          </Button>
-          <div className="titleBaoGiaUser">
-            Các báo giá của [{usernameOfbBaoGia}]
-          </div>
-          <Table
-            columns={columns2}
-            dataSource={currUserBaoGia}
-            loading={loading}
-          />
-        </>
-      ) : (
+      {getCurrUser().role === 0 && (
         <Table
           columns={columns}
           dataSource={data}
           loading={loading}
         />
       )}
+
+      {/* STAFF */}
+      <Modal
+        title="Lý do huỷ"
+        open={enterReasonHuy}
+        footer={null}
+        onCancel={() => setEnterReasonHuy(false)}
+      >
+        <textarea
+          row={10}
+          className="CurrBaoGia_CommentBox"
+          placeholder="Tôi huỷ dự án này vì..."
+          style={Object.assign({
+            fontSize: "13px",
+            height: "140px",
+            maxHeight: "140px",
+            minHeight: "140px",
+          })}
+          value={reasonHuy}
+          onChange={(e) => setReasonHuy(e.target.value)}
+        />
+        <Spin spinning={updateStatusLoading}>
+          <button
+            className="CurrBaoGia_SendComment"
+            onClick={() => handleInteractStatus(4)}
+          >
+            Xác nhận huỷ
+          </button>
+        </Spin>
+      </Modal>
+      <Modal
+        open={currViewBaoGia}
+        onCancel={handleCloseDetails}
+        title={`Dự án: ${currViewBaoGia?.tenduan}`}
+        footer={
+          currViewBaoGia && (
+            <>
+              <div className="btnCtn">
+                <Button
+                  style={{ marginRight: "10px" }}
+                  onClick={() => setEnterReasonHuy(true)}
+                  danger
+                  disabled={
+                    currViewBaoGia.status === 1 ||
+                    currViewBaoGia.status === 2 ||
+                    currViewBaoGia.status === 4
+                  }
+                >
+                  Huỷ dự án này
+                </Button>
+                <Button
+                  type="primary"
+                  onClick={() => handleInteractStatus(3)}
+                  disabled={currViewBaoGia.status > 0}
+                >
+                  Đã gửi báo giá
+                </Button>
+              </div>
+            </>
+          )
+        }
+      >
+        <Spin spinning={updateStatusLoading}>
+          <BaoGiaModal baogia={currViewBaoGia} />
+        </Spin>
+      </Modal>
+      <div className="staffBaoGiaContainer">
+        {getCurrUser().role === 2 &&
+          allBaoGia?.map((baogiaData, i) => (
+            <div
+              className="staffBaoGia"
+              key={i}
+              onClick={() => handleViewDetails(baogiaData)}
+            >
+              <div className="staffBaoGia_header">
+                <div className="staffBaoGia_title">
+                  Dự án: {baogiaData.tenduan}
+                </div>
+                <div className="staffBaoGia_size">
+                  {Number(baogiaData.dientichkhudat).toLocaleString()} m²
+                </div>
+              </div>
+              <div className="staffBaoGia_Footer">
+                <div className="staffBaoGia_comments">
+                  {baogiaData.comments ? baogiaData.comments.length : 0} phản
+                  hồi
+                </div>
+                {getStatus(baogiaData.status)}
+              </div>
+            </div>
+          ))}
+      </div>
     </div>
   );
 };

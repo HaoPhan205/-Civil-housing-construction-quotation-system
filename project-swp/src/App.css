@@ -2,6 +2,20 @@
     scroll-behavior: smooth;
 }
 
+.ant-modal {
+    top: 10px !important;
+}
+
+.ant-checkbox, .ant-checkbox-inner {
+    border: none !important;
+    background: transparent !important;
+    width: 20px !important;
+}
+
+* {
+    scroll-behavior: smooth;
+}
+
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
